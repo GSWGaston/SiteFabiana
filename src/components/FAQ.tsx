@@ -151,7 +151,7 @@ function FaqItem({
 }
 
 export default function FAQ() {
-  const [openId, setOpenId] = useState<string | null>('faq1');
+  const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <section
