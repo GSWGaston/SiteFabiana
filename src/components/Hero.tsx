@@ -1,6 +1,6 @@
 import { MessageCircle, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { PuzzlePieces } from './decorations/PuzzlePieces';
+import { CornerPuzzleBorder } from './decorations/CornerPuzzleBorder';
 import { LayeredWaves } from './decorations/LayeredWaves';
 import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
 
@@ -118,16 +118,8 @@ export default function Hero() {
         position: 'relative',
       }}
     >
-      {/* Floating Corner Puzzle Pieces - Brand Signature */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-        transition={{ duration: 0.9, delay: 0.2 }}
-        className="absolute top-4 right-4 sm:top-8 sm:right-10 z-20 pointer-events-none"
-        style={floatStyle}
-      >
-        <PuzzlePieces size={88} />
-      </motion.div>
+      {/* Anchored Corner Puzzle Border - Brand Signature */}
+      <CornerPuzzleBorder />
 
       {/* Floating dot clusters */}
       <div className="absolute top-14 left-6 opacity-60 hidden md:block pointer-events-none">
