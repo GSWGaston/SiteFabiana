@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Users, ClipboardCheck, TrendingUp } from 'lucide-react';
+import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -30,6 +31,7 @@ const steps = [
     iconColor: '#06A1BC',
     iconBg: 'rgba(6,161,188,0.12)',
     accentLine: '#06A1BC',
+    accentSecondary: '#82B42D',
     title: 'Acolhimento & Anamnese',
     description:
       'Sessão inicial de escuta atenta com a família ou paciente para compreender histórico de vida, queixas e expectativas. Um espaço de acolhimento sem julgamentos.',
@@ -39,14 +41,15 @@ const steps = [
   {
     number: '02',
     icon: <ClipboardCheck size={28} />,
-    iconColor: '#4F4878',
-    iconBg: 'rgba(79,72,120,0.10)',
-    accentLine: '#4F4878',
+    iconColor: '#F52C75',
+    iconBg: 'rgba(245,44,117,0.12)',
+    accentLine: '#F52C75',
+    accentSecondary: '#FD8303',
     title: 'Avaliação Neuropsicopedagógica',
     description:
       'Aplicação de instrumentos padronizados, testes cognitivos, atividades lúdicas e observação clínica minuciosa — um mapeamento completo das potencialidades e dificuldades.',
     tag: 'Avaliação Completa',
-    tagColor: '#4F4878',
+    tagColor: '#F52C75',
   },
   {
     number: '03',
@@ -54,6 +57,7 @@ const steps = [
     iconColor: '#82B42D',
     iconBg: 'rgba(130,180,45,0.12)',
     accentLine: '#82B42D',
+    accentSecondary: '#06A1BC',
     title: 'Intervenção & Devolutiva',
     description:
       'Apresentação de relatório detalhado e início do plano de intervenção contínuo, focado em metas reais e mensuráveis — com acompanhamento constante da evolução.',
@@ -87,7 +91,7 @@ export default function Services() {
         }}
       />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -96,7 +100,10 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           style={{ textAlign: 'center', marginBottom: '3.5rem' }}
         >
-          <SectionBadge>Como Funciona</SectionBadge>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+            <SectionBadge>Como Funciona</SectionBadge>
+            <StarDoodle size={22} />
+          </div>
           <h2
             style={{
               fontFamily: 'Poppins, sans-serif',
@@ -156,17 +163,30 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               style={{
-                background: '#FAF9FC',
+                background: '#FFFFFF',
                 borderRadius: '20px',
                 padding: '2.25rem 2rem',
-                border: '1px solid rgba(79,72,120,0.07)',
-                boxShadow: '0 10px 30px -10px rgba(79,72,120,0.1)',
+                border: `1.5px solid ${step.accentLine}25`,
+                boxShadow: `0 12px 32px -10px ${step.accentLine}18`,
                 position: 'relative',
                 zIndex: 1,
+                overflow: 'hidden',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               }}
               className="card-hover"
             >
+              {/* Top colored accent bar */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '5px',
+                  background: `linear-gradient(90deg, ${step.accentLine}, ${step.accentSecondary})`,
+                }}
+              />
+
               {/* Step number accent */}
               <div
                 style={{
@@ -258,6 +278,11 @@ export default function Services() {
               />
             </motion.div>
           ))}
+        </div>
+
+        {/* Floating confetti dots */}
+        <div className="absolute -bottom-6 right-4 opacity-40 pointer-events-none hidden md:block">
+          <DotCluster />
         </div>
       </div>
 

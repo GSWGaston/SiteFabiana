@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { PuzzlePieces } from './decorations/PuzzlePieces';
+import { StarDoodle, HeartDoodle, DotCluster, CurvedDashedLine } from './decorations/BrandDoodles';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -154,6 +156,20 @@ export default function About() {
               height: 'min(390px, 105vw)',
             }}
           >
+            {/* Corner Puzzle Pieces on photo frame */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-18px',
+                left: '-18px',
+                zIndex: 10,
+                pointerEvents: 'none',
+                transform: 'rotate(-10deg)',
+              }}
+            >
+              <PuzzlePieces size={72} />
+            </div>
+
             {/* Outer decorative border */}
             <div
               style={{
@@ -221,8 +237,9 @@ export default function About() {
           transition={{ duration: 0.7, delay: 0.15 }}
           style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
         >
-          <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <SectionBadge>Sobre Mim</SectionBadge>
+            <StarDoodle size={24} />
           </div>
 
           <div>
@@ -230,12 +247,16 @@ export default function About() {
               style={{
                 fontFamily: 'Poppins, sans-serif',
                 fontWeight: 800,
-                fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)',
+                fontSize: 'clamp(1.65rem, 3.8vw, 2.5rem)',
                 color: '#4F4878',
                 margin: '0 0 0.4rem',
               }}
             >
-              Prazer, eu sou a Fabiana Gaston
+              Prazer, eu{' '}
+              <span className="font-handwriting text-[#F52C75] text-4xl sm:text-5xl font-bold inline-block transform -rotate-2 mx-1">
+                sou
+              </span>{' '}
+              a Fabiana!
             </h2>
             <p
               style={{
@@ -279,6 +300,65 @@ export default function About() {
             baseadas em evidências. Essa busca constante pela atualização científica caminha
             sempre lado a lado com o afeto genuíno por cada história que chega até mim.
           </p>
+
+          {/* Dashed-Border Experience Card (Inspired by the "30 Anos" Post) */}
+          <div
+            className="dashed-card"
+            style={{
+              border: '2px dashed #4F4878',
+              borderRadius: '16px',
+              padding: '1.15rem 1.4rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+              background: 'rgba(255,255,255,0.95)',
+              boxShadow: '0 6px 20px -6px rgba(79,72,120,0.1)',
+            }}
+          >
+            <div
+              style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '9999px',
+                background: 'rgba(245,44,117,0.12)',
+                border: '1.5px solid rgba(245,44,117,0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}
+            >
+              <HeartDoodle size={24} fill={true} />
+            </div>
+            <div>
+              <span
+                style={{
+                  display: 'block',
+                  fontFamily: 'Poppins, sans-serif',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  color: '#F52C75',
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  marginBottom: '2px',
+                }}
+              >
+                Tradição & Amor pelo Educar
+              </span>
+              <p
+                style={{
+                  fontFamily: 'Poppins, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '0.98rem',
+                  color: '#4F4878',
+                  margin: 0,
+                  lineHeight: 1.4,
+                }}
+              >
+                30 anos de experiência dedicados à educação e ao desenvolvimento humano.
+              </p>
+            </div>
+          </div>
 
           {/* Quote Box */}
           <div
@@ -334,6 +414,14 @@ export default function About() {
             </p>
           </div>
         </motion.div>
+      </div>
+
+      {/* Curved dashed line accent in the corner */}
+      <div className="absolute top-6 right-8 hidden md:block opacity-40 pointer-events-none">
+        <CurvedDashedLine color="#4F4878" width={110} height={45} />
+      </div>
+      <div className="absolute bottom-10 right-6 opacity-60 hidden lg:block pointer-events-none">
+        <DotCluster />
       </div>
 
       <style>{`

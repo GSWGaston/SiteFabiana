@@ -1,5 +1,8 @@
 import { MessageCircle, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { PuzzlePieces } from './decorations/PuzzlePieces';
+import { LayeredWaves } from './decorations/LayeredWaves';
+import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
 
 const WHATSAPP_URL =
   'https://wa.me/5551999999999?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
@@ -110,11 +113,30 @@ export default function Hero() {
         minHeight: 'calc(100vh - 68px)',
         display: 'flex',
         alignItems: 'center',
-        padding: '4rem 1.25rem',
+        padding: '4rem 1.25rem 6.5rem',
         overflow: 'hidden',
         position: 'relative',
       }}
     >
+      {/* Floating Corner Puzzle Pieces - Brand Signature */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ duration: 0.9, delay: 0.2 }}
+        className="absolute top-4 right-4 sm:top-8 sm:right-10 z-20 pointer-events-none"
+        style={floatStyle}
+      >
+        <PuzzlePieces size={88} />
+      </motion.div>
+
+      {/* Floating dot clusters */}
+      <div className="absolute top-14 left-6 opacity-60 hidden md:block pointer-events-none">
+        <DotCluster />
+      </div>
+      <div className="absolute bottom-28 right-1/3 opacity-50 hidden lg:block pointer-events-none">
+        <DotCluster />
+      </div>
+
       {/* Decorative background blobs */}
       <div
         style={{
@@ -150,6 +172,8 @@ export default function Hero() {
           gridTemplateColumns: '1fr',
           gap: '3rem',
           alignItems: 'center',
+          position: 'relative',
+          zIndex: 5,
         }}
         className="hero-grid"
       >
@@ -160,7 +184,7 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
         >
-          {/* Badge Pill */}
+          {/* Badge Pill with Star Doodle */}
           <div
             style={{
               display: 'inline-flex',
@@ -169,7 +193,7 @@ export default function Hero() {
               background: 'rgba(79,72,120,0.08)',
               border: '1px solid rgba(79,72,120,0.18)',
               borderRadius: '9999px',
-              padding: '8px 16px',
+              padding: '8px 18px',
               fontSize: '0.78rem',
               fontFamily: 'Inter, sans-serif',
               fontWeight: 600,
@@ -177,32 +201,26 @@ export default function Hero() {
               width: 'fit-content',
             }}
           >
-            <span>✨</span>
+            <StarDoodle size={20} />
             <span>Atendimento Presencial em Porto Alegre e Região Metropolitana</span>
           </div>
 
-          {/* H1 Headline */}
+          {/* H1 Headline with cursive accent */}
           <h1
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 800,
-              fontSize: 'clamp(2rem, 5vw, 3.25rem)',
-              lineHeight: 1.15,
+              fontSize: 'clamp(2.1rem, 5.2vw, 3.35rem)',
+              lineHeight: 1.18,
               color: '#4F4878',
               margin: 0,
             }}
           >
             Desenvolvimento cognitivo e aprendizagem com{' '}
-            <span
-              style={{
-                background: 'linear-gradient(135deg, #06A1BC, #4F4878)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              afeto e base científica.
-            </span>
+            <span className="font-handwriting text-[#F52C75] text-4xl sm:text-5xl md:text-6xl font-bold inline-block transform -rotate-2 mx-1">
+              afeto
+            </span>{' '}
+            e base científica.
           </h1>
 
           {/* Subtitle */}
@@ -422,6 +440,9 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
+
+      {/* Multi-layered organic wave transitioning into Credentials */}
+      <LayeredWaves fillNext="#FFFFFF" className="absolute bottom-0 left-0 right-0 z-10" />
 
       <style>{`
         @media (min-width: 900px) {

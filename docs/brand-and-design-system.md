@@ -62,12 +62,13 @@ Pure black creates harshness that conflicts with the warm, empathetic brand pers
 
 ### Font Stack
 
-| Role | Font Family | Fallback |
-|---|---|---|
-| **Headings** | Poppins | system-ui, sans-serif |
-| **Body / UI** | Inter | system-ui, sans-serif |
+| Role | Font Family | Fallback | Usage |
+|---|---|---|---|
+| **Headings** | Poppins | system-ui, sans-serif | Structural titles, authoritative branding |
+| **Body / UI** | Inter | system-ui, sans-serif | Paragraphs, navigation, buttons, badges |
+| **Accent / Empathy** | Caveat | cursive, sans-serif | Handwritten emotional keywords in Pink (`#F52C75`) |
 
-Both fonts are loaded from Google Fonts via the `<head>` of `index.html` using `display=swap` for performance.
+Fonts are loaded from Google Fonts via the `<head>` of `index.html` using `display=swap` for performance.
 
 ### Type Hierarchy
 
@@ -156,7 +157,7 @@ All grids use CSS Grid with responsive breakpoints:
 ---
 
 ## 6. Decorative Language
-
+ 
 The site uses a set of consistent decorative micro-elements to add warmth without clutter:
 
 - **Floating SVG tags** over portrait images (pills with emoji + text, `animation: float`)
@@ -165,3 +166,30 @@ The site uses a set of consistent decorative micro-elements to add warmth withou
 - **Large faded step numbers** (opacity 0.08) as watermark backgrounds in service cards
 - **Colored left-border accent bars** on step cards (4px wide, vertical gradient)
 - **Quote marks** in `Georgia` serif at large size, low opacity, as pull-quote decorations
+
+### Brand Accents & Neurodivergent Motifs
+
+The visual identity incorporates specific recurring graphic motifs inspired by Fabiana Gaston's official posts and pediatric/neurodivergent clinical practice:
+
+1. **Corner Puzzle Pieces (Peças de Quebra-Cabeça)**
+   - **Colors**: Neon Pink (`#F52C75`), Lime Green (`#82B42D`), and Deep Purple (`#4F4878`).
+   - **Rationale**: Historically and clinically associated with neurodiversity, cognitive integration, and problem-solving. Rather than rigid clinical blocks, the interlocking pieces symbolize how individual strengths, sensory processing, and learning styles connect into a harmonious whole.
+   - **Placement**: Floating in the Hero top-right corner, framing the About Me photo frame, and subtly accenting the Target Audience section.
+
+2. **Layered Multi-Color Organic Waves (Ondas Fluidas Coloridas)**
+   - **Colors**: Triple-layered flowing curves in Lime Green (`#82B42D`), Neon Pink (`#F52C75`), and Pacific Blue (`#06A1BC`).
+   - **Rationale**: Directly derived from Fabiana's signature social media carousel dividers. The fluid, non-linear curves represent neuroplasticity, cognitive adaptability, and smooth developmental transitions between life stages, breaking sterile corporate straight lines.
+   - **Placement**: Transitioning Hero into the Credentials bar, and cascading into the top edge of the Conversion Banner.
+
+3. **Dashed-Border Experience Card & Dashed Lines**
+   - **Style**: Soft grape dashed borders (`2px dashed #4F4878`), rounded corners (`16–18px`), and a vibrant Pink Heart badge.
+   - **Rationale**: Inspired directly by Fabiana's "30 Anos de Dedicação" post. The dashed outline evokes pedagogical craft, notebooks, and clinical human warmth, contrasting against intimidating solid barriers.
+
+4. **Script / Handwritten Typography Accents (`Caveat`)**
+   - **Font**: `Caveat` (Google Fonts, weights 600–700), highlighted in Neon Pink (`#F52C75`) with slight rotational tilts (`-1deg` to `-2deg`).
+   - **Rationale**: Replicates the specialist's personal, handwritten emphasis on emotional keywords (*afeto*, *sou*, *não tem idade*), ensuring the website feels like a warm, personalized greeting rather than an impersonal institution.
+
+5. **Playful Doodles & Confetti Dot Clusters**
+   - **Yellow Star Doodle (`#FD8303` / `#FACC15`)**: Signifies achievement, encouragement, and cognitive sparks in learning.
+   - **Pink Heart Accents (`#F52C75`)**: Emphasizes empathy in pediatric care and family guidance.
+   - **Multi-Colored Dot Clusters**: Evokes celebration, neurodevelopmental milestones, and cheerful cognitive play.

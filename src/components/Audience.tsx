@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { PuzzlePieces } from './decorations/PuzzlePieces';
+import { HeartDoodle, DotCluster } from './decorations/BrandDoodles';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -29,9 +31,12 @@ const audiences = [
     title: 'Crianças e Jovens',
     topAccent: '#F52C75',
     bottomAccent: '#FD8303',
+    cardBorder: '1.5px solid rgba(245,44,117,0.25)',
+    cardShadow: '0 12px 36px -10px rgba(245,44,117,0.14)',
     tagColor: '#F52C75',
     tagBg: 'rgba(245,44,117,0.08)',
     tagText: 'Infância & Adolescência',
+    isPediatric: true,
     items: [
       'Dificuldades de aprendizagem, alfabetização, leitura e escrita (Dislexia)',
       'Desatenção, impulsividade e foco (TDAH)',
@@ -45,6 +50,8 @@ const audiences = [
     title: 'Adultos e Terceira Idade',
     topAccent: '#06A1BC',
     bottomAccent: '#82B42D',
+    cardBorder: '1.5px solid rgba(6,161,188,0.22)',
+    cardShadow: '0 12px 36px -10px rgba(6,161,188,0.12)',
     tagColor: '#06A1BC',
     tagBg: 'rgba(6,161,188,0.08)',
     tagText: 'Todas as Idades',
@@ -60,7 +67,9 @@ const audiences = [
     emoji: '🏫',
     title: 'Famílias e Escolas',
     topAccent: '#4F4878',
-    bottomAccent: '#4F4878',
+    bottomAccent: '#6b64a0',
+    cardBorder: '1.5px solid rgba(79,72,120,0.2)',
+    cardShadow: '0 12px 36px -10px rgba(79,72,120,0.12)',
     tagColor: '#4F4878',
     tagBg: 'rgba(79,72,120,0.08)',
     tagText: 'Suporte Sistêmico',
@@ -77,9 +86,17 @@ export default function Audience() {
   return (
     <section
       id="publico"
-      style={{ background: '#FAF9FC', padding: '5rem 1.25rem' }}
+      style={{ background: '#FAF9FC', padding: '5rem 1.25rem', position: 'relative', overflow: 'hidden' }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Subtle corner puzzle piece accent */}
+      <div className="absolute top-8 right-6 opacity-35 pointer-events-none hidden sm:block">
+        <PuzzlePieces size={70} />
+      </div>
+      <div className="absolute bottom-8 left-8 opacity-45 pointer-events-none hidden md:block">
+        <DotCluster />
+      </div>
+
+      <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -93,12 +110,16 @@ export default function Audience() {
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 800,
-              fontSize: 'clamp(1.75rem, 4vw, 2.6rem)',
+              fontSize: 'clamp(1.75rem, 4.2vw, 2.7rem)',
               color: '#4F4878',
               margin: '1rem 0 0.75rem',
             }}
           >
-            Aprender e estimular o cérebro não tem idade
+            Aprender e estimular o cérebro{' '}
+            <span className="font-handwriting text-[#F52C75] text-3xl sm:text-4xl md:text-5xl font-bold inline-block transform -rotate-1 mx-1">
+              não tem idade
+            </span>
+            .
           </h2>
           <p
             style={{
@@ -135,8 +156,8 @@ export default function Audience() {
                 background: '#fff',
                 borderRadius: '20px',
                 overflow: 'hidden',
-                boxShadow: '0 10px 30px -10px rgba(79,72,120,0.1)',
-                border: '1px solid rgba(79,72,120,0.07)',
+                boxShadow: aud.cardShadow,
+                border: aud.cardBorder,
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 cursor: 'default',
               }}
@@ -145,7 +166,7 @@ export default function Audience() {
               {/* Top accent bar */}
               <div
                 style={{
-                  height: '5px',
+                  height: '6px',
                   background: `linear-gradient(90deg, ${aud.topAccent}, ${aud.bottomAccent})`,
                 }}
               />
@@ -171,9 +192,15 @@ export default function Audience() {
                         fontSize: '1.2rem',
                         color: '#4F4878',
                         margin: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
                       }}
                     >
                       {aud.title}
+                      {aud.isPediatric && (
+                        <HeartDoodle size={18} fill={false} />
+                      )}
                     </h3>
                   </div>
                   <span
