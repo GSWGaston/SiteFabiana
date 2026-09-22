@@ -2,7 +2,7 @@ import { Mail, MessageCircle, MapPin, Phone } from 'lucide-react';
 import logoFabiana from '../assets/Logo Fabiana.png';
 
 const WHATSAPP_URL =
-  'https://wa.me/5551984310108?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
+  'https://wa.me/555184310180?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
 const INSTAGRAM_URL = 'https://instagram.com/fabianagaston.neuro';
 const EMAIL = 'fabianadgaston.pedagoga@gmail.com';
 const currentYear = new Date().getFullYear();
@@ -241,7 +241,7 @@ export default function Footer() {
               }}
             >
               <Phone size={16} />
-              (51) 98431-0108
+              (51) 8431-0180
             </a>
 
             <a
