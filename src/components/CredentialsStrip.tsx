@@ -46,7 +46,7 @@ export default function CredentialsStrip() {
           maxWidth: '1200px',
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
+          gridTemplateColumns: '1fr',
           gap: '1.5rem',
         }}
         className="credentials-grid"
@@ -66,6 +66,7 @@ export default function CredentialsStrip() {
               borderRadius: '16px',
               background: '#FAF9FC',
               border: '1px solid rgba(79,72,120,0.07)',
+              minWidth: 0,
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
             }}
             className="card-hover"
@@ -86,7 +87,7 @@ export default function CredentialsStrip() {
             >
               {item.icon}
             </div>
-            <div>
+            <div style={{ minWidth: 0 }}>
               <div
                 style={{
                   fontFamily: 'Poppins, sans-serif',
@@ -114,8 +115,11 @@ export default function CredentialsStrip() {
       </div>
 
       <style>{`
+        @media (min-width: 560px) {
+          .credentials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+        }
         @media (min-width: 768px) {
-          .credentials-grid { grid-template-columns: repeat(4, 1fr) !important; }
+          .credentials-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
         }
       `}</style>
     </section>

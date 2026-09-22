@@ -41,6 +41,15 @@ body {
   overflow-x: hidden;
 }
 
+html, body, #root {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+section, main, footer {
+  max-width: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   color: #4F4878;
@@ -167,6 +176,31 @@ h1, h2, h3, h4, h5, h6 {
 
 .whatsapp-float:hover .tooltip {
   opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .whatsapp-float {
+    width: 54px;
+    height: 54px;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .whatsapp-float .tooltip {
+    display: none;
+  }
+
+  #hero [style*="right: -20px"] {
+    right: 0 !important;
+  }
+
+  #hero [style*="left: -20px"] {
+    left: 0 !important;
+  }
+
+  #sobre [style*="right: -24px"] {
+    right: 0 !important;
+  }
 }
 
 /* ─── Glass Card ─── */

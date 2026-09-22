@@ -14,6 +14,16 @@ const floatStyle = {
 
 /* ── Inline SVG brain illustration (placeholder for the portrait) ── */
 function PortraitIllustration() {
+  if (photoFabiana) {
+    return (
+      <img
+        src={photoFabiana}
+        alt="Fabiana Gaston, neuropsicopedagoga"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+      />
+    );
+  }
+
   return (
     <svg
       viewBox="0 0 320 400"

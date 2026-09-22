@@ -27,6 +27,16 @@ function SectionBadge({ children }: { children: React.ReactNode }) {
 
 /* ── Reuse of the SVG portrait from Hero (self-contained here) ── */
 function AboutPortrait() {
+  if (photoFabiana) {
+    return (
+      <img
+        src={photoFabiana}
+        alt="Fabiana Gaston, neuropsicopedagoga"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+      />
+    );
+  }
+
   return (
     <svg
       viewBox="0 0 320 400"
