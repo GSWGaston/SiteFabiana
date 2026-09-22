@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
+import logoFabiana from '../assets/Logo Fabiana.png';
 
 const WHATSAPP_URL =
-  'https://wa.me/5551999999999?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
+  'https://wa.me/5551984310108?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
 
 const navLinks = [
   { label: 'Início',        href: '#hero' },
@@ -63,27 +64,11 @@ export default function Navbar() {
             style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}
             onClick={handleLinkClick}
           >
-            {/* Brain icon mark */}
-            <div
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #4F4878, #06A1BC)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: '0 4px 12px rgba(79,72,120,0.3)',
-              }}
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2C9.5 2 7.5 3.8 7.5 6c0 .8.2 1.5.6 2.1C6.1 8.8 5 10.3 5 12c0 1.3.5 2.4 1.3 3.3-.2.5-.3 1.1-.3 1.7C6 19.2 7.8 21 10 21c.8 0 1.5-.2 2.1-.6.6.4 1.3.6 2 .6 2.2 0 4-1.8 4-4 0-.6-.1-1.2-.3-1.7.8-.9 1.3-2 1.3-3.3 0-1.7-1.1-3.2-2.6-3.9.4-.6.6-1.3.6-2.1C17.1 3.8 14.8 2 12 2z" fill="white" fillOpacity="0.9"/>
-                <circle cx="9.5" cy="9.5" r="1" fill="white" fillOpacity="0.6"/>
-                <circle cx="14.5" cy="9.5" r="1" fill="white" fillOpacity="0.6"/>
-                <path d="M9.5 14.5c0 0 1 1.5 2.5 1.5s2.5-1.5 2.5-1.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" fill="none"/>
-              </svg>
-            </div>
+            <img
+              src={logoFabiana}
+              alt="Logo Fabiana Gaston"
+              style={{ width: '42px', height: '42px', objectFit: 'contain', flexShrink: 0 }}
+            />
 
             <div>
               <div

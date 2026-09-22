@@ -1,8 +1,10 @@
-import { MessageCircle, MapPin, Phone } from 'lucide-react';
+import { Mail, MessageCircle, MapPin, Phone } from 'lucide-react';
+import logoFabiana from '../assets/Logo Fabiana.png';
 
 const WHATSAPP_URL =
-  'https://wa.me/5551999999999?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
-const INSTAGRAM_URL = 'https://instagram.com/fabianagaston.neuropedago';
+  'https://wa.me/5551984310108?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
+const INSTAGRAM_URL = 'https://instagram.com/fabianagaston.neuro';
+const EMAIL = 'fabianadgaston.pedagoga@gmail.com';
 const currentYear = new Date().getFullYear();
 
 function InstagramIcon({ size = 24 }: { size?: number }) {
@@ -59,22 +61,11 @@ export default function Footer() {
         <div>
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
-            <div
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #4F4878, #06A1BC)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 4px 12px rgba(6,161,188,0.3)',
-              }}
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2C9.5 2 7.5 3.8 7.5 6c0 .8.2 1.5.6 2.1C6.1 8.8 5 10.3 5 12c0 1.3.5 2.4 1.3 3.3-.2.5-.3 1.1-.3 1.7C6 19.2 7.8 21 10 21c.8 0 1.5-.2 2.1-.6.6.4 1.3.6 2 .6 2.2 0 4-1.8 4-4 0-.6-.1-1.2-.3-1.7.8-.9 1.3-2 1.3-3.3 0-1.7-1.1-3.2-2.6-3.9.4-.6.6-1.3.6-2.1C17.1 3.8 14.8 2 12 2z" fill="white" fillOpacity="0.9"/>
-              </svg>
-            </div>
+            <img
+              src={logoFabiana}
+              alt="Logo Fabiana Gaston"
+              style={{ width: '44px', height: '44px', objectFit: 'contain', flexShrink: 0 }}
+            />
             <div>
               <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#fff', fontSize: '1rem' }}>
                 Fabiana Gaston
@@ -250,7 +241,24 @@ export default function Footer() {
               }}
             >
               <Phone size={16} />
-              +55 (51) 99999-9999
+              (51) 98431-0108
+            </a>
+
+            <a
+              href={`mailto:${EMAIL}`}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '0.88rem',
+                color: '#06A1BC',
+                textDecoration: 'none',
+                overflowWrap: 'anywhere',
+              }}
+            >
+              <Mail size={16} />
+              {EMAIL}
             </a>
 
             <a
@@ -269,7 +277,7 @@ export default function Footer() {
               }}
             >
               <InstagramIcon size={16} />
-              @fabianagaston.neuropedago
+              @fabianagaston.neuro
             </a>
           </div>
 
@@ -334,7 +342,7 @@ export default function Footer() {
             margin: 0,
           }}
         >
-          CRP/CFP · Neuropsicopedagogia Clínica · Porto Alegre - RS
+          Pedagogia · Neuropsicopedagogia · Porto Alegre - RS
         </p>
       </div>
 

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { PuzzlePieces } from './decorations/PuzzlePieces';
+import { PuzzleAccent } from './decorations/PuzzlePieces';
 import { StarDoodle, HeartDoodle, DotCluster, CurvedDashedLine } from './decorations/BrandDoodles';
+import photoFabiana from '../assets/Foto Fabiana 2.png';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -101,6 +102,14 @@ function AboutPortrait() {
       {[[30,25],[290,25],[15,200],[305,200]].map(([cx, cy], i) => (
         <circle key={i} cx={cx} cy={cy} r="3.5" fill="#FD8303" fillOpacity="0.35" />
       ))}
+      <image
+        href={photoFabiana}
+        x="0"
+        y="0"
+        width="320"
+        height="400"
+        preserveAspectRatio="xMidYMin slice"
+      />
     </svg>
   );
 }
@@ -156,7 +165,7 @@ export default function About() {
               height: 'min(390px, 105vw)',
             }}
           >
-            {/* Corner Puzzle Pieces on photo frame */}
+            {/* A short diagonal run keeps the portrait frame playful without becoming a block. */}
             <div
               style={{
                 position: 'absolute',
@@ -167,7 +176,7 @@ export default function About() {
                 transform: 'rotate(-10deg)',
               }}
             >
-              <PuzzlePieces size={72} />
+              <PuzzleAccent variant="frame" size={142} opacity={0.75} />
             </div>
 
             {/* Outer decorative border */}
@@ -217,13 +226,13 @@ export default function About() {
                   lineHeight: 1,
                 }}
               >
-                🏆
+                💜
               </div>
               <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>
-                Mestranda
+                30 anos
               </div>
               <div style={{ fontSize: '0.65rem', color: '#06A1BC', fontWeight: 700 }}>
-                Internacional ABA
+                de experiência
               </div>
             </div>
           </div>
@@ -267,7 +276,7 @@ export default function About() {
                 margin: 0,
               }}
             >
-              Neuropsicopedagoga Clínica · Mestranda Internacional em ABA
+              Neuropsicopedagoga · Pedagoga especialista em Neuropsicopedagogia
             </p>
           </div>
 
@@ -280,10 +289,9 @@ export default function About() {
               margin: 0,
             }}
           >
-            Acredito que cada mente carrega um potencial único, e é esse potencial que me move. 
-            Dedico minha prática profissional à integração entre neurociência, psicologia e pedagogia,
-            criando pontes entre o que a ciência sabe sobre o cérebro e o que cada família precisa
-            para sua própria jornada.
+            Sou apaixonada pelo desenvolvimento humano e por transformar vidas através do acolhimento,
+            da compreensão e de estratégias que fazem sentido. Acredito que cada pessoa é única e que
+            toda conquista tem valor.
           </p>
 
           <p
@@ -295,10 +303,9 @@ export default function About() {
               margin: 0,
             }}
           >
-            Atualmente, aprofundo minha formação em Análise do Comportamento Aplicada (ABA) 
-            em programa internacional de mestrado, mantendo-me na vanguarda das práticas
-            baseadas em evidências. Essa busca constante pela atualização científica caminha
-            sempre lado a lado com o afeto genuíno por cada história que chega até mim.
+            Formada em Pedagogia e especialista em Neuropsicopedagogia, atuo com avaliação,
+            intervenção e orientação para crianças, adolescentes, adultos, famílias e escolas.
+            Meu propósito é ajudar pessoas a superar desafios, desenvolver habilidades e conquistar autonomia.
           </p>
 
           {/* Dashed-Border Experience Card (Inspired by the "30 Anos" Post) */}

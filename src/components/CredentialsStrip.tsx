@@ -5,8 +5,8 @@ const credentials = [
   {
     icon: <GraduationCap size={26} />,
     iconBg: 'linear-gradient(135deg, #06A1BC, #057f95)',
-    title: 'Mestrado Internacional em ABA',
-    subtitle: 'Em formação',
+    title: 'Pedagogia & Neuropsicopedagogia',
+    subtitle: 'Formação e especialização',
     shadowColor: 'rgba(6,161,188,0.3)',
   },
   {

@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
-import { PuzzlePieces } from './decorations/PuzzlePieces';
+import { PuzzleAccent } from './decorations/PuzzlePieces';
 import { HeartDoodle, DotCluster } from './decorations/BrandDoodles';
+import { LayeredWaves } from './decorations/LayeredWaves';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -88,13 +89,14 @@ export default function Audience() {
       id="publico"
       style={{ background: '#FAF9FC', padding: '5rem 1.25rem', position: 'relative', overflow: 'hidden' }}
     >
-      {/* Subtle corner puzzle piece accent */}
-      <div className="absolute top-8 right-6 opacity-35 pointer-events-none hidden sm:block">
-        <PuzzlePieces size={70} />
+      {/* A translucent corner frame, rather than an isolated icon. */}
+      <div className="absolute -top-3 -right-8 hidden md:block">
+        <PuzzleAccent variant="cluster" size={210} opacity={0.38} />
       </div>
       <div className="absolute bottom-8 left-8 opacity-45 pointer-events-none hidden md:block">
         <DotCluster />
       </div>
+      <LayeredWaves variant="soft" fillNext="#FFFFFF" className="absolute bottom-0 left-0 right-0 z-0" />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}

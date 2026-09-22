@@ -3,9 +3,10 @@ import { motion } from 'framer-motion';
 import { CornerPuzzleBorder } from './decorations/CornerPuzzleBorder';
 import { LayeredWaves } from './decorations/LayeredWaves';
 import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
+import photoFabiana from '../assets/Foto Fabiana 2.png';
 
 const WHATSAPP_URL =
-  'https://wa.me/5551999999999?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
+  'https://wa.me/5551984310108?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
 
 const floatStyle = {
   animation: 'float 4s ease-in-out infinite',
@@ -95,11 +96,20 @@ function PortraitIllustration() {
       <path d="M120 295 L90 350 L160 340 L230 350 L200 295 L160 320 Z" fill="white" fillOpacity="0.3" />
 
       {/* Decorative neural dots */}
-      {[
+      {[ 
         [40, 30], [280, 30], [20, 380], [300, 130]
       ].map(([cx, cy], i) => (
         <circle key={i} cx={cx} cy={cy} r="3.5" fill="#06A1BC" fillOpacity="0.4" />
       ))}
+      <rect width="320" height="400" fill="#80614c" />
+      <image
+        href={photoFabiana}
+        x="0"
+        y="14"
+        width="320"
+        height="400"
+        preserveAspectRatio="xMidYMin slice"
+      />
     </svg>
   );
 }
@@ -402,7 +412,7 @@ export default function Hero() {
                 whiteSpace: 'nowrap',
               }}
             >
-              🎓 Mestranda em ABA
+              💜 30 anos de experiência
             </div>
 
             {/* Decorative corner dots */}

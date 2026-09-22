@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { Home, Video, MessageCircle } from 'lucide-react';
+import { PuzzleAccent } from './decorations/PuzzlePieces';
+import { LayeredWaves } from './decorations/LayeredWaves';
 
 const WHATSAPP_URL =
-  'https://wa.me/5551999999999?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
+  'https://wa.me/5551984310108?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -87,8 +89,12 @@ export default function Locations() {
           pointerEvents: 'none',
         }}
       />
+      <div className="absolute -top-3 -right-7 hidden lg:block">
+        <PuzzleAccent variant="corner" size={215} opacity={0.3} />
+      </div>
+      <LayeredWaves variant="soft" fillNext="#FAF9FC" className="absolute bottom-0 left-0 right-0 z-0" />
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}

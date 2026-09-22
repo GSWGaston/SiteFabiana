@@ -271,3 +271,27 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link:hover::after {
   width: 100%;
 }
+
+/* Gentle movement for the brand's organic section dividers. */
+@keyframes wave-drift {
+  0%, 100% {
+    transform: translate3d(-0.8%, 0, 0) scaleX(1.025);
+  }
+  50% {
+    transform: translate3d(0.8%, 0, 0) scaleX(1.025);
+  }
+}
+
+.wave-drift {
+  animation-name: wave-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-drift {
+    animation: none;
+  }
+}

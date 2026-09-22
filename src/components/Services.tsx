@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Users, ClipboardCheck, TrendingUp } from 'lucide-react';
 import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
+import { PuzzleAccent } from './decorations/PuzzlePieces';
+import { LayeredWaves } from './decorations/LayeredWaves';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -45,7 +47,7 @@ const steps = [
     iconBg: 'rgba(245,44,117,0.12)',
     accentLine: '#F52C75',
     accentSecondary: '#FD8303',
-    title: 'Avaliação Neuropsicopedagógica',
+    title: 'Avaliação e Diagnóstico Neuropsicopedagógico',
     description:
       'Aplicação de instrumentos padronizados, testes cognitivos, atividades lúdicas e observação clínica minuciosa — um mapeamento completo das potencialidades e dificuldades.',
     tag: 'Avaliação Completa',
@@ -58,10 +60,10 @@ const steps = [
     iconBg: 'rgba(130,180,45,0.12)',
     accentLine: '#82B42D',
     accentSecondary: '#06A1BC',
-    title: 'Intervenção & Devolutiva',
+    title: 'Intervenção, Estratégias & Acompanhamento',
     description:
-      'Apresentação de relatório detalhado e início do plano de intervenção contínuo, focado em metas reais e mensuráveis — com acompanhamento constante da evolução.',
-    tag: 'Plano Personalizado',
+      'Plano personalizado com estratégias para desenvolver habilidades, superar desafios e acompanhar cada conquista com acolhimento e ética.',
+    tag: 'Acompanhamento Contínuo',
     tagColor: '#82B42D',
   },
 ];
@@ -90,6 +92,10 @@ export default function Services() {
           pointerEvents: 'none',
         }}
       />
+      <div className="absolute -bottom-2 -left-8 hidden lg:block">
+        <PuzzleAccent variant="trail" size={360} opacity={0.28} />
+      </div>
+      <LayeredWaves variant="ribbon" fillNext="#FAF9FC" className="absolute bottom-0 left-0 right-0 z-0" />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}

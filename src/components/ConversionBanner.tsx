@@ -4,14 +4,14 @@ import { LayeredWaves } from './decorations/LayeredWaves';
 import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
 
 const WHATSAPP_URL =
-  'https://wa.me/5551999999999?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
+  'https://wa.me/5551984310108?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
 
 export default function ConversionBanner() {
   return (
     <div id="contato" className="relative">
       {/* Multi-layered organic wave at the top edge of final banner */}
       <div style={{ background: '#FFFFFF', lineHeight: 0 }}>
-        <LayeredWaves fillNext="#4F4878" className="w-full block" />
+        <LayeredWaves variant="bold" fillNext="#4F4878" className="w-full block" />
       </div>
 
       <section
