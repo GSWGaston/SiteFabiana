@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
-import logoFabiana from '../assets/Logo Fabiana.png';
+import logoFabiana from '../assets/logo-fabiana.webp';
 
 const WHATSAPP_URL =
   'https://wa.me/555184310180?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
@@ -85,8 +85,8 @@ export default function Navbar() {
               <div
                 style={{
                   fontFamily: 'Inter, sans-serif',
-                  fontSize: '0.68rem',
-                  color: '#06A1BC',
+                  fontSize: '0.8rem',
+                  color: '#057f95',
                   fontWeight: 500,
                   letterSpacing: '0.04em',
                   textTransform: 'lowercase',
@@ -104,14 +104,14 @@ export default function Navbar() {
               listStyle: 'none',
               margin: 0,
               padding: 0,
-              gap: '2rem',
+              gap: '1.5rem',
               alignItems: 'center',
             }}
             className="desktop-nav"
           >
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="nav-link">
+                <a href={link.href} className="nav-link" style={{ whiteSpace: 'nowrap' }}>
                   {link.label}
                 </a>
               </li>
@@ -281,7 +281,7 @@ export default function Navbar() {
 
       {/* ── Inline style to show/hide desktop elements ── */}
       <style>{`
-        @media (min-width: 900px) {
+        @media (min-width: 1100px) {
           .desktop-nav  { display: flex !important; }
           .desktop-cta  { display: flex !important; }
           #mobile-menu-btn { display: none !important; }

@@ -2,127 +2,11 @@ import { MessageCircle, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CornerPuzzleBorder } from './decorations/CornerPuzzleBorder';
 import { LayeredWaves } from './decorations/LayeredWaves';
-import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
-import photoFabiana from '../assets/Foto Fabiana 2.png';
+import { StarDoodle } from './decorations/BrandDoodles';
+import { HeroPortrait } from './decorations/HeroPortrait';
 
 const WHATSAPP_URL =
   'https://wa.me/555184310180?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
-
-const floatStyle = {
-  animation: 'float 4s ease-in-out infinite',
-};
-
-/* ── Inline SVG brain illustration (placeholder for the portrait) ── */
-function PortraitIllustration() {
-  if (photoFabiana) {
-    return (
-      <img
-        src={photoFabiana}
-        alt="Fabiana Gaston, neuropsicopedagoga"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
-      />
-    );
-  }
-
-  return (
-    <svg
-      viewBox="0 0 320 400"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ width: '100%', height: '100%', borderRadius: '24px' }}
-    >
-      <defs>
-        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#EDE9F8" />
-          <stop offset="100%" stopColor="#D6F0F6" />
-        </linearGradient>
-        <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#F5C7A3" />
-          <stop offset="100%" stopColor="#E8A87C" />
-        </linearGradient>
-        <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#6b64a0" />
-          <stop offset="100%" stopColor="#4F4878" />
-        </linearGradient>
-        <radialGradient id="faceGrad" cx="50%" cy="40%">
-          <stop offset="0%" stopColor="#F8D5B5" />
-          <stop offset="100%" stopColor="#E8A87C" />
-        </radialGradient>
-      </defs>
-
-      {/* Background */}
-      <rect width="320" height="400" fill="url(#bgGrad)" />
-
-      {/* Decorative circles */}
-      <circle cx="30" cy="60" r="40" fill="rgba(79,72,120,0.08)" />
-      <circle cx="290" cy="340" r="55" fill="rgba(6,161,188,0.08)" />
-      <circle cx="280" cy="80" r="25" fill="rgba(245,44,117,0.07)" />
-
-      {/* Body / shirt */}
-      <ellipse cx="160" cy="370" rx="100" ry="60" fill="url(#shirtGrad)" />
-      <rect x="80" y="300" width="160" height="100" fill="url(#shirtGrad)" rx="8" />
-
-      {/* Neck */}
-      <rect x="140" y="255" width="40" height="55" fill="url(#skinGrad)" rx="4" />
-
-      {/* Face */}
-      <ellipse cx="160" cy="200" rx="78" ry="88" fill="url(#faceGrad)" />
-
-      {/* Hair */}
-      <ellipse cx="160" cy="140" rx="80" ry="55" fill="#3D2B1F" />
-      <ellipse cx="90" cy="185" rx="18" ry="45" fill="#3D2B1F" />
-      <ellipse cx="230" cy="185" rx="18" ry="45" fill="#3D2B1F" />
-      <rect x="88" y="138" width="144" height="40" fill="#3D2B1F" />
-
-      {/* Eyes */}
-      <ellipse cx="132" cy="200" rx="12" ry="10" fill="white" />
-      <ellipse cx="188" cy="200" rx="12" ry="10" fill="white" />
-      <circle cx="134" cy="201" r="7" fill="#2D1B0E" />
-      <circle cx="190" cy="201" r="7" fill="#2D1B0E" />
-      <circle cx="136" cy="199" r="2.5" fill="white" />
-      <circle cx="192" cy="199" r="2.5" fill="white" />
-
-      {/* Eyebrows */}
-      <path d="M118 186 Q132 179 146 183" stroke="#3D2B1F" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-      <path d="M174 183 Q188 179 202 186" stroke="#3D2B1F" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-
-      {/* Nose */}
-      <path d="M155 210 Q158 225 165 225 Q168 225 165 210" stroke="#C68642" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-
-      {/* Smile */}
-      <path d="M140 238 Q160 252 180 238" stroke="#C06A30" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-
-      {/* Lips tint */}
-      <ellipse cx="160" cy="242" rx="16" ry="7" fill="#E87070" fillOpacity="0.35" />
-
-      {/* Earrings */}
-      <circle cx="83" cy="205" r="5" fill="#06A1BC" />
-      <circle cx="237" cy="205" r="5" fill="#06A1BC" />
-
-      {/* Blush */}
-      <ellipse cx="118" cy="222" rx="14" ry="8" fill="#F52C75" fillOpacity="0.12" />
-      <ellipse cx="202" cy="222" rx="14" ry="8" fill="#F52C75" fillOpacity="0.12" />
-
-      {/* White coat collar hint */}
-      <path d="M120 295 L90 350 L160 340 L230 350 L200 295 L160 320 Z" fill="white" fillOpacity="0.3" />
-
-      {/* Decorative neural dots */}
-      {[ 
-        [40, 30], [280, 30], [20, 380], [300, 130]
-      ].map(([cx, cy], i) => (
-        <circle key={i} cx={cx} cy={cy} r="3.5" fill="#06A1BC" fillOpacity="0.4" />
-      ))}
-      <rect width="320" height="400" fill="#80614c" />
-      <image
-        href={photoFabiana}
-        x="0"
-        y="14"
-        width="320"
-        height="400"
-        preserveAspectRatio="xMidYMin slice"
-      />
-    </svg>
-  );
-}
 
 export default function Hero() {
   return (
@@ -140,14 +24,6 @@ export default function Hero() {
     >
       {/* Anchored Corner Puzzle Border - Brand Signature */}
       <CornerPuzzleBorder />
-
-      {/* Floating dot clusters */}
-      <div className="absolute top-14 left-6 opacity-60 hidden md:block pointer-events-none">
-        <DotCluster />
-      </div>
-      <div className="absolute bottom-28 right-1/3 opacity-50 hidden lg:block pointer-events-none">
-        <DotCluster />
-      </div>
 
       {/* Decorative background blobs */}
       <div
@@ -241,7 +117,7 @@ export default function Hero() {
               fontFamily: 'Inter, sans-serif',
               fontSize: 'clamp(1rem, 2vw, 1.15rem)',
               lineHeight: 1.7,
-              color: '#64748b',
+              color: '#4a5568',
               margin: 0,
               maxWidth: '520px',
             }}
@@ -326,11 +202,11 @@ export default function Hero() {
               gap: '8px',
               fontSize: '0.82rem',
               fontFamily: 'Inter, sans-serif',
-              color: '#64748b',
+              color: '#4a5568',
             }}
           >
-            <span style={{ color: '#FD8303', fontSize: '1rem' }}>⭐⭐⭐⭐⭐</span>
-            <span>Atendimento humanizado, ético e individualizado</span>
+            <span style={{ color: '#F52C75' }}>♥</span>
+            <span>30 anos de experiência · atendimento humanizado, ético e individualizado</span>
           </div>
         </motion.div>
 
@@ -339,117 +215,9 @@ export default function Hero() {
           initial={{ opacity: 0, x: 32 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
-          style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
+          style={{ position: 'relative', display: 'flex', justifyContent: 'center', padding: '0 6%' }}
         >
-          {/* Portrait Frame */}
-          <div
-            style={{
-              position: 'relative',
-              width: 'min(340px, 90vw)',
-              height: 'min(420px, 110vw)',
-              borderRadius: '28px',
-              overflow: 'visible',
-            }}
-          >
-            {/* Decorative ring */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: '-12px',
-                borderRadius: '36px',
-                background: 'linear-gradient(135deg, #06A1BC22, #4F487822)',
-                border: '2px solid rgba(79,72,120,0.15)',
-                zIndex: 0,
-              }}
-            />
-
-            {/* Portrait box */}
-            <div
-              style={{
-                position: 'relative',
-                zIndex: 1,
-                width: '100%',
-                height: '100%',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                boxShadow: '0 24px 60px -10px rgba(79,72,120,0.22)',
-              }}
-            >
-              <PortraitIllustration />
-            </div>
-
-            {/* Floating Tag – Top Right */}
-            <div
-              style={{
-                ...floatStyle,
-                position: 'absolute',
-                top: '16px',
-                right: '-20px',
-                zIndex: 10,
-                background: '#fff',
-                borderRadius: '9999px',
-                padding: '8px 14px',
-                boxShadow: '0 8px 24px rgba(79,72,120,0.18)',
-                border: '1px solid rgba(79,72,120,0.1)',
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 600,
-                fontSize: '0.75rem',
-                color: '#4F4878',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              🧠 Estimulação Cognitiva
-            </div>
-
-            {/* Floating Tag – Bottom Left */}
-            <div
-              style={{
-                ...floatStyle,
-                animationDelay: '2s',
-                position: 'absolute',
-                bottom: '28px',
-                left: '-20px',
-                zIndex: 10,
-                background: '#fff',
-                borderRadius: '9999px',
-                padding: '8px 14px',
-                boxShadow: '0 8px 24px rgba(79,72,120,0.18)',
-                border: '1px solid rgba(79,72,120,0.1)',
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 600,
-                fontSize: '0.75rem',
-                color: '#4F4878',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              💜 30 anos de experiência
-            </div>
-
-            {/* Decorative corner dots */}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '-20px',
-                right: '-16px',
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr 1fr',
-                gap: '5px',
-              }}
-            >
-              {Array.from({ length: 9 }).map((_, i) => (
-                <div
-                  key={i}
-                  style={{
-                    width: '5px',
-                    height: '5px',
-                    borderRadius: '9999px',
-                    background: '#06A1BC',
-                    opacity: 0.4,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
+          <HeroPortrait />
         </motion.div>
       </div>
 

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { PuzzleAccent } from './decorations/PuzzlePieces';
 import { StarDoodle, HeartDoodle, DotCluster, CurvedDashedLine } from './decorations/BrandDoodles';
-import photoFabiana from '../assets/Foto Fabiana 2.png';
+import photoFabiana from '../assets/foto-fabiana.webp';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -238,10 +238,10 @@ export default function About() {
               >
                 💜
               </div>
-              <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>
+              <div style={{ fontSize: '0.8rem', color: '#4a5568', fontWeight: 600 }}>
                 30 anos
               </div>
-              <div style={{ fontSize: '0.65rem', color: '#06A1BC', fontWeight: 700 }}>
+              <div style={{ fontSize: '0.8rem', color: '#06A1BC', fontWeight: 700 }}>
                 de experiência
               </div>
             </div>
@@ -352,7 +352,7 @@ export default function About() {
                 style={{
                   display: 'block',
                   fontFamily: 'Poppins, sans-serif',
-                  fontSize: '0.72rem',
+                  fontSize: '0.8rem',
                   fontWeight: 700,
                   color: '#F52C75',
                   letterSpacing: '0.04em',

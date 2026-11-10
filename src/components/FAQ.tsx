@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
-import { PuzzleAccent } from './decorations/PuzzlePieces';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -158,9 +157,6 @@ export default function FAQ() {
       id="faq"
       style={{ background: '#FAF9FC', padding: '5rem 1.25rem', position: 'relative', overflow: 'hidden' }}
     >
-      <div className="absolute -bottom-5 -right-5 hidden lg:block">
-        <PuzzleAccent variant="frame" size={225} opacity={0.26} style={{ transform: 'rotate(10deg)' }} />
-      </div>
       <div
         style={{
           maxWidth: '800px',
@@ -191,7 +187,7 @@ export default function FAQ() {
             style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '1rem',
-              color: '#64748b',
+              color: '#4a5568',
               lineHeight: 1.7,
               margin: 0,
             }}

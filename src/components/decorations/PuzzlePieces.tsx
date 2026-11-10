@@ -6,62 +6,82 @@ interface PuzzleAccentProps {
   variant?: 'hero' | 'cluster' | 'frame' | 'trail' | 'corner';
 }
 
-type Piece = {
-  color: string;
-  x: number;
-  y: number;
-  rotation: number;
-};
+/** Tab on each edge, clockwise from top: 1 = knob out, -1 = socket, 0 = flat. */
+type Tabs = [number, number, number, number];
 
+type Piece = { color: string; x: number; y: number; rotation: number; tabs: Tabs };
+
+/** One jigsaw edge from A to B; `n` is the outward normal, `s` the tab sign. */
+function edge(ax: number, ay: number, bx: number, by: number, nx: number, ny: number, s: number) {
+  const p = (u: number, v: number) =>
+    `${(ax + (bx - ax) * u + nx * v * 100 * s).toFixed(1)} ${(ay + (by - ay) * u + ny * v * 100 * s).toFixed(1)}`;
+  if (s === 0) return `L${bx} ${by}`;
+  return [
+    `L${p(0.34, 0)}`,
+    `C${p(0.4, 0)} ${p(0.4, 0.06)} ${p(0.37, 0.1)}`,
+    `C${p(0.28, 0.24)} ${p(0.72, 0.24)} ${p(0.63, 0.1)}`,
+    `C${p(0.6, 0.06)} ${p(0.6, 0)} ${p(0.66, 0)}`,
+    `L${bx} ${by}`,
+  ].join(' ');
+}
+
+/** Jigsaw outline on a 100x100 body; knobs reach about 20 units outside it. */
+function piecePath([t, r, b, l]: Tabs) {
+  return `M0 0 ${edge(0, 0, 100, 0, 0, -1, t)} ${edge(100, 0, 100, 100, 1, 0, r)} ${edge(100, 100, 0, 100, 0, 1, b)} ${edge(0, 100, 0, 0, -1, 0, l)} Z`;
+}
+
+const RED = '#E2284D';
+const ORANGE = '#FD8303';
+const GREEN = '#82B42D';
+const TEAL = '#06A1BC';
+const PINK = '#F52C75';
+
+// Neighbours use complementary tabs (knob next to socket) so pieces read as interlocked.
 const palettes = {
   hero: [
-    { color: '#FD8303', x: 8, y: 9, rotation: -5 },
-    { color: '#06A1BC', x: 77, y: 5, rotation: 3 },
-    { color: '#F52C75', x: 146, y: 8, rotation: -4 },
-    { color: '#82B42D', x: 215, y: 6, rotation: 4 },
-    { color: '#FD8303', x: 282, y: 10, rotation: -3 },
-    { color: '#06A1BC', x: 151, y: 76, rotation: 4 },
-    { color: '#82B42D', x: 220, y: 75, rotation: -3 },
-    { color: '#F52C75', x: 286, y: 138, rotation: 4 },
+    { color: RED, x: 0, y: 0, rotation: -4, tabs: [0, 1, -1, 0] },
+    { color: ORANGE, x: 70, y: 4, rotation: 3, tabs: [1, -1, 1, -1] },
+    { color: GREEN, x: 140, y: 0, rotation: -2, tabs: [-1, 1, 0, 1] },
+    { color: TEAL, x: 210, y: 6, rotation: 4, tabs: [0, 0, 1, -1] },
+    { color: PINK, x: 205, y: 76, rotation: -6, tabs: [-1, 0, 0, 1] },
   ],
   cluster: [
-    { color: '#06A1BC', x: 8, y: 8, rotation: -5 },
-    { color: '#F52C75', x: 78, y: 7, rotation: 4 },
-    { color: '#82B42D', x: 42, y: 78, rotation: -4 },
-    { color: '#FD8303', x: 112, y: 78, rotation: 5 },
+    { color: TEAL, x: 0, y: 0, rotation: -5, tabs: [0, 1, 1, 0] },
+    { color: PINK, x: 70, y: 4, rotation: 4, tabs: [1, 0, -1, -1] },
+    { color: GREEN, x: 4, y: 70, rotation: -4, tabs: [-1, -1, 0, 0] },
+    { color: ORANGE, x: 74, y: 74, rotation: 5, tabs: [1, 0, 0, 1] },
   ],
   frame: [
-    { color: '#F52C75', x: 7, y: 8, rotation: -5 },
-    { color: '#06A1BC', x: 77, y: 8, rotation: 4 },
-    { color: '#82B42D', x: 42, y: 78, rotation: -4 },
-    { color: '#FD8303', x: 112, y: 78, rotation: 5 },
+    { color: PINK, x: 0, y: 0, rotation: -5, tabs: [0, -1, 1, 0] },
+    { color: TEAL, x: 70, y: 4, rotation: 4, tabs: [1, 0, 1, 1] },
+    { color: GREEN, x: 4, y: 70, rotation: -4, tabs: [-1, 1, 0, 0] },
+    { color: ORANGE, x: 74, y: 74, rotation: 5, tabs: [-1, 0, 0, -1] },
   ],
   trail: [
-    { color: '#FD8303', x: 4, y: 17, rotation: -5 },
-    { color: '#06A1BC', x: 73, y: 7, rotation: 3 },
-    { color: '#82B42D', x: 142, y: 18, rotation: -4 },
-    { color: '#F52C75', x: 211, y: 7, rotation: 4 },
-    { color: '#FD8303', x: 280, y: 17, rotation: -3 },
+    { color: ORANGE, x: 0, y: 10, rotation: -5, tabs: [1, 1, 0, 0] },
+    { color: TEAL, x: 70, y: 0, rotation: 3, tabs: [0, -1, 1, -1] },
+    { color: GREEN, x: 140, y: 10, rotation: -4, tabs: [-1, 1, 0, 1] },
+    { color: PINK, x: 210, y: 0, rotation: 4, tabs: [1, -1, -1, -1] },
   ],
   corner: [
-    { color: '#82B42D', x: 7, y: 8, rotation: -4 },
-    { color: '#F52C75', x: 77, y: 8, rotation: 4 },
-    { color: '#06A1BC', x: 42, y: 78, rotation: -3 },
-    { color: '#FD8303', x: 112, y: 78, rotation: 4 },
+    { color: GREEN, x: 0, y: 0, rotation: -4, tabs: [0, 1, 1, 0] },
+    { color: PINK, x: 70, y: 4, rotation: 4, tabs: [-1, 0, -1, -1] },
+    { color: TEAL, x: 4, y: 70, rotation: -3, tabs: [-1, 1, 0, 0] },
+    { color: ORANGE, x: 74, y: 74, rotation: 4, tabs: [1, 0, 0, -1] },
   ],
 } satisfies Record<NonNullable<PuzzleAccentProps['variant']>, Piece[]>;
 
 const viewBoxes = {
-  hero: '0 0 370 225',
-  cluster: '0 0 210 185',
-  frame: '0 0 210 185',
-  trail: '0 0 370 125',
-  corner: '0 0 210 185',
+  hero: '-24 -24 330 210',
+  cluster: '-24 -24 220 200',
+  frame: '-24 -24 220 200',
+  trail: '-24 -24 330 160',
+  corner: '-24 -24 220 200',
 } satisfies Record<NonNullable<PuzzleAccentProps['variant']>, string>;
 
 /**
- * A soft-edged jigsaw motif. Every piece has recognizable tabs and sockets,
- * while the layout changes from section to section.
+ * Jigsaw motif: every piece has its own tab layout, a soft highlight and a white
+ * edge, and neighbours interlock.
  */
 export function PuzzleAccent({
   className = '',
@@ -76,34 +96,31 @@ export function PuzzleAccent({
       className={`select-none pointer-events-none ${className}`}
       style={{
         width: size,
-        filter: 'drop-shadow(0 5px 10px rgba(79,72,120,0.13))',
+        filter: 'drop-shadow(0 6px 8px rgba(79,72,120,0.22))',
         opacity,
         ...style,
       }}
     >
       <svg viewBox={viewBoxes[variant]} xmlns="http://www.w3.org/2000/svg" className="block w-full h-auto">
-        {palettes[variant].map((piece, index) => (
-          <g
-            key={`${variant}-${index}`}
-            transform={`translate(${piece.x} ${piece.y}) rotate(${piece.rotation} 45 45)`}
-          >
-            <path
-              d="M8 8 H30 C30 1 36 -2 41 -2 C46 -2 52 1 52 8 H74 V30 C81 30 84 36 84 41 C84 46 81 52 74 52 V74 H52 C52 81 46 84 41 84 C36 84 30 81 30 74 H8 V52 C1 52 -2 46 -2 41 C-2 36 1 30 8 30 V8 Z"
-              fill={piece.color}
-              stroke="#EAF0F8"
-              strokeWidth="3.5"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-            />
-            <path
-              d="M13 12 H29 C31 6 36 3 41 3 C46 3 51 6 52 12"
-              fill="none"
-              stroke="rgba(255,255,255,0.28)"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </g>
-        ))}
+        <defs>
+          <linearGradient id="pz-shine" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#fff" stopOpacity="0.38" />
+            <stop offset="0.55" stopColor="#fff" stopOpacity="0" />
+            <stop offset="1" stopColor="#000" stopOpacity="0.14" />
+          </linearGradient>
+        </defs>
+        {palettes[variant].map((piece, index) => {
+          const d = piecePath(piece.tabs);
+          return (
+            <g
+              key={`${variant}-${index}`}
+              transform={`translate(${piece.x + 2} ${piece.y + 2}) rotate(${piece.rotation} 33 33) scale(0.66)`}
+            >
+              <path d={d} fill={piece.color} stroke="#fff" strokeWidth="5" strokeLinejoin="round" />
+              <path d={d} fill="url(#pz-shine)" />
+            </g>
+          );
+        })}
       </svg>
     </div>
   );

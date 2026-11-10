@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
 import { Home, Video, MessageCircle } from 'lucide-react';
-import { PuzzleAccent } from './decorations/PuzzlePieces';
-import { LayeredWaves } from './decorations/LayeredWaves';
 
 const WHATSAPP_URL =
   'https://wa.me/555184310180?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
@@ -89,10 +87,6 @@ export default function Locations() {
           pointerEvents: 'none',
         }}
       />
-      <div className="absolute -top-3 -right-7 hidden lg:block">
-        <PuzzleAccent variant="corner" size={215} opacity={0.3} />
-      </div>
-      <LayeredWaves variant="soft" fillNext="#FAF9FC" className="absolute bottom-0 left-0 right-0 z-0" />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
@@ -119,7 +113,7 @@ export default function Locations() {
             style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '1.05rem',
-              color: '#64748b',
+              color: '#4a5568',
               maxWidth: '480px',
               margin: '0 auto',
               lineHeight: 1.7,
@@ -188,7 +182,7 @@ export default function Locations() {
                       color: '#fff',
                       borderRadius: '9999px',
                       padding: '3px 12px',
-                      fontSize: '0.72rem',
+                      fontSize: '0.8rem',
                       fontFamily: 'Poppins, sans-serif',
                       fontWeight: 700,
                       display: 'inline-block',

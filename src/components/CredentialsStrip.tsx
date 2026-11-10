@@ -103,7 +103,7 @@ export default function CredentialsStrip() {
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '0.8rem',
-                  color: '#8b8ba8',
+                  color: '#5f5a80',
                   marginTop: '2px',
                 }}
               >

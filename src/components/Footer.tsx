@@ -1,5 +1,5 @@
 import { Mail, MessageCircle, MapPin, Phone } from 'lucide-react';
-import logoFabiana from '../assets/Logo Fabiana.png';
+import logoFabiana from '../assets/logo-fabiana.webp';
 
 const WHATSAPP_URL =
   'https://wa.me/555184310180?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
@@ -70,7 +70,7 @@ export default function Footer() {
               <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#fff', fontSize: '1rem' }}>
                 Fabiana Gaston
               </div>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.68rem', color: '#06A1BC', fontWeight: 500 }}>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: '#06A1BC', fontWeight: 500 }}>
                 neuropsicopedagoga
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function Footer() {
               fontFamily: 'Inter, sans-serif',
               fontSize: '0.88rem',
               lineHeight: 1.75,
-              color: '#9896b8',
+              color: '#c4c0dc',
               maxWidth: '280px',
               margin: 0,
             }}
@@ -180,7 +180,7 @@ export default function Footer() {
               <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.88rem', color: '#c4c0dc', lineHeight: 1.6 }}>
                 Porto Alegre e Região Metropolitana
               </div>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: '#6f6d8a', marginTop: '2px' }}>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: '#a9a6c8', marginTop: '2px' }}>
                 Rio Grande do Sul - RS
               </div>
             </div>
@@ -194,12 +194,12 @@ export default function Footer() {
                   style={{
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '0.86rem',
-                    color: '#9896b8',
+                    color: '#c4c0dc',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#06A1BC')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#9896b8')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#c4c0dc')}
                 >
                   {link.label}
                 </a>
@@ -328,7 +328,7 @@ export default function Footer() {
           style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '0.78rem',
-            color: '#6f6d8a',
+            color: '#a9a6c8',
             margin: 0,
           }}
         >
@@ -338,7 +338,7 @@ export default function Footer() {
           style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '0.78rem',
-            color: '#4a4860',
+            color: '#a9a6c8',
             margin: 0,
           }}
         >
@@ -348,7 +348,7 @@ export default function Footer() {
 
       <style>{`
         @media (min-width: 768px) {
-          .footer-grid { grid-template-columns: 1.4fr 1fr 1.2fr !important; }
+          .footer-grid { grid-template-columns: 1.1fr 0.9fr 1.6fr !important; }
         }
       `}</style>
     </footer>

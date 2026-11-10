@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import { Users, ClipboardCheck, TrendingUp } from 'lucide-react';
-import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
-import { PuzzleAccent } from './decorations/PuzzlePieces';
-import { LayeredWaves } from './decorations/LayeredWaves';
+import { StarDoodle } from './decorations/BrandDoodles';
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -92,10 +90,6 @@ export default function Services() {
           pointerEvents: 'none',
         }}
       />
-      <div className="absolute -bottom-2 -left-8 hidden lg:block">
-        <PuzzleAccent variant="trail" size={360} opacity={0.28} />
-      </div>
-      <LayeredWaves variant="ribbon" fillNext="#FAF9FC" className="absolute bottom-0 left-0 right-0 z-0" />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
@@ -125,7 +119,7 @@ export default function Services() {
             style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '1.05rem',
-              color: '#64748b',
+              color: '#4a5568',
               maxWidth: '520px',
               margin: '0 auto',
               lineHeight: 1.7,
@@ -201,9 +195,9 @@ export default function Services() {
                   right: '1.5rem',
                   fontFamily: 'Poppins, sans-serif',
                   fontWeight: 800,
-                  fontSize: '3.5rem',
+                  fontSize: '4rem',
                   color: step.accentLine,
-                  opacity: 0.08,
+                  opacity: 0.3,
                   lineHeight: 1,
                 }}
               >
@@ -262,7 +256,7 @@ export default function Services() {
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '0.9rem',
-                  color: '#64748b',
+                  color: '#4a5568',
                   lineHeight: 1.7,
                   margin: 0,
                 }}
@@ -286,10 +280,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Floating confetti dots */}
-        <div className="absolute -bottom-6 right-4 opacity-40 pointer-events-none hidden md:block">
-          <DotCluster />
-        </div>
       </div>
 
       <style>{`
