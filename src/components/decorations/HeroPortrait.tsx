@@ -1,21 +1,20 @@
 import photo from '../../assets/foto-fabiana.webp';
+import { Crayon } from './Crayon';
 
 const BLOB = 'M52 2 C78 0 97 16 96 44 C95 68 82 80 66 92 C52 102 34 106 20 96 C6 86 3 66 6 46 C9 22 28 4 52 2 Z';
-const HEART =
-  'M16 28 C13 25 3 18 2 11 C1 6 5 2 10 3 C13 3.5 15 5.5 16 7.5 C17 5.5 19 3.5 22 3 C27 2 31 6 30 11 C29 18 19 25 16 28 Z';
+
+// Same crayon box as the puzzle illustration.
+const GREEN = '#6CC22C';
+const RED = '#F0264F';
+const ORANGE = '#FF9410';
+const YELLOW = '#FFC82E';
 
 const float = (delay = 0): React.CSSProperties => ({ animation: `float 5s ease-in-out ${delay}s infinite` });
 
-/** Portrait cut into an organic blob, with the layered shapes around it. */
+/** Portrait cut into an organic blob, with crayon-drawn hearts and stars around it. */
 export function HeroPortrait({ minimal = false }: { minimal?: boolean }) {
   return (
     <div style={{ position: 'relative', width: 'min(440px, 100%)', aspectRatio: '1 / 1.05' }}>
-      {/* soft lavender backdrop */}
-      <svg viewBox="0 0 100 108" aria-hidden="true" style={{ position: 'absolute', inset: '-8% -10%', width: '120%', height: '116%' }}>
-        <path d={BLOB} fill="rgba(139,120,210,0.16)" transform="translate(-4 3) scale(1.06) rotate(-8 50 54)" />
-      </svg>
-
-      {/* photo */}
       <svg
         viewBox="0 0 100 108"
         role="img"
@@ -31,33 +30,31 @@ export function HeroPortrait({ minimal = false }: { minimal?: boolean }) {
         <path d={BLOB} fill="none" stroke="#fff" strokeWidth="1.6" />
       </svg>
 
-      {!minimal && (
-      <svg viewBox="0 0 32 32" aria-hidden="true" style={{ position: 'absolute', left: '-8%', top: '10%', width: '26%', transform: 'rotate(-12deg)', ...float() }}>
-        <path d={HEART} fill="#82B42D" stroke="#fff" strokeWidth="0.8" />
-        {[[9, 9], [15, 7], [21, 10], [8, 15], [14, 14], [20, 16], [13, 21]].map(([x, y]) => (
-          <path key={`${x}-${y}`} d={`M${x} ${y} l3 -2`} stroke="#A9D35E" strokeWidth="1.2" strokeLinecap="round" />
-        ))}
-      </svg>
+      {minimal ? (
+        <>
+          <div style={{ position: 'absolute', left: '-4%', bottom: '-5%', ...float(1.2) }}>
+            <Crayon shape="heart" color={RED} size={96} tilt={-12} seed={4} />
+          </div>
+          <div style={{ position: 'absolute', right: '4%', top: '-3%', ...float(0.4) }}>
+            <Crayon shape="star" color={ORANGE} size={64} tilt={14} seed={7} />
+          </div>
+        </>
+      ) : (
+        <>
+          <div style={{ position: 'absolute', left: '-9%', top: '6%', ...float() }}>
+            <Crayon shape="heart" color={GREEN} size={104} tilt={-14} seed={2} />
+          </div>
+          <div className="hero-oval" style={{ position: 'absolute', right: '-5%', top: '34%', ...float(0.8) }}>
+            <Crayon shape="star" color={ORANGE} size={72} tilt={12} seed={5} />
+          </div>
+          <div style={{ position: 'absolute', right: '6%', bottom: '-7%', ...float(2.2) }}>
+            <Crayon shape="heart" color={RED} size={112} tilt={11} seed={9} />
+          </div>
+          <div className="hero-oval" style={{ position: 'absolute', right: '22%', top: '-6%', ...float(1.5) }}>
+            <Crayon shape="sun" color={YELLOW} size={58} tilt={-8} seed={12} />
+          </div>
+        </>
       )}
-
-      {/* orange oval */}
-      {!minimal && (
-      <div
-        aria-hidden="true"
-        className="hero-oval"
-        style={{
-          position: 'absolute', right: '-3%', top: '50%', width: '14%', aspectRatio: '1 / 0.82', borderRadius: '50%',
-          background: 'linear-gradient(135deg, #FFB347, #FD8303)', transform: 'rotate(-20deg)', boxShadow: '0 8px 16px -4px rgba(253,131,3,0.45)',
-          ...float(0.8),
-        }}
-      />
-      )}
-
-      {/* teal blob */}
-      <svg viewBox="0 0 100 70" aria-hidden="true" style={{ position: 'absolute', ...(minimal ? { left: '4%', bottom: '-4%', width: '32%' } : { right: '12%', bottom: '-6%', width: '38%' }), ...float(2.2) }}>
-        <path d="M8 40 C4 18 30 4 56 10 C84 16 98 38 82 56 C66 72 22 70 8 40 Z" fill="#1FC4C0" stroke="#fff" strokeWidth="3" />
-      </svg>
-
     </div>
   );
 }

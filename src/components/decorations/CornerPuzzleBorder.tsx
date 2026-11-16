@@ -1,13 +1,16 @@
-import { PuzzleAccent } from './PuzzlePieces';
+import puzzle from '../../assets/puzzle-giz.webp';
 
-/**
- * Kept as a semantic name for the hero, while using the softer puzzle motif
- * shared across the rest of the page.
- */
+/** Crayon-drawn puzzle pieces, anchored to the hero's top-right corner. */
 export function CornerPuzzleBorder() {
   return (
-    <div className="absolute top-3 right-0 z-0 hidden md:block pointer-events-none select-none">
-      <PuzzleAccent variant="hero" size={285} opacity={0.92} />
-    </div>
+    <img
+      src={puzzle}
+      alt=""
+      width={1000}
+      height={334}
+      aria-hidden="true"
+      className="absolute top-4 right-2 z-0 hidden md:block pointer-events-none select-none"
+      style={{ width: 'min(380px, 32vw)', height: 'auto' }}
+    />
   );
 }

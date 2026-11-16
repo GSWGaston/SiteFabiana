@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { Heart } from 'lucide-react';
-import { HeartDoodle } from './decorations/BrandDoodles';
+import { Crayon } from './decorations/Crayon';
 import { HeroPortrait } from './decorations/HeroPortrait';
 
 export default function About() {
@@ -63,7 +62,7 @@ export default function About() {
                 textAlign: 'center',
               }}
             >
-              <Heart size={22} fill="#F52C75" color="#F52C75" aria-hidden="true" />
+              <Crayon shape="heart" color="#F0264F" size={34} seed={6} style={{ margin: '0 auto', display: 'block' }} />
               <div style={{ fontSize: '0.94rem', color: '#4F4878', fontWeight: 700, marginTop: '4px' }}>30 anos</div>
               <div style={{ fontSize: '0.84rem', color: '#057f95', fontWeight: 600 }}>de experiência</div>
             </div>
@@ -152,21 +151,7 @@ export default function About() {
               boxShadow: '0 6px 20px -6px rgba(79,72,120,0.1)',
             }}
           >
-            <div
-              style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '9999px',
-                background: 'rgba(245,44,117,0.12)',
-                border: '1.5px solid rgba(245,44,117,0.3)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}
-            >
-              <HeartDoodle size={24} fill={true} />
-            </div>
+            <Crayon shape="heart" color="#F0264F" size={52} tilt={-8} seed={3} style={{ flexShrink: 0 }} />
             <div>
               <span
                 style={{
