@@ -12,8 +12,8 @@ const credentials = [
   {
     icon: <MapPin size={26} />,
     iconBg: 'linear-gradient(135deg, #FD8303, #e06f02)',
-    title: 'Presencial em Porto Alegre',
-    subtitle: 'e Região Metropolitana',
+    title: 'Presencial e Online',
+    subtitle: 'Porto Alegre e todo o Brasil',
     shadowColor: 'rgba(253,131,3,0.3)',
   },
   {

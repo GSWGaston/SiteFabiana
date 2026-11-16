@@ -90,7 +90,7 @@ export default function Hero() {
             }}
           >
             <StarDoodle size={20} />
-            <span>Atendimento Presencial em Porto Alegre e Região Metropolitana</span>
+            <span>Presencial em Porto Alegre e Região Metropolitana · Online para todo o Brasil</span>
           </div>
 
           {/* H1 Headline with cursive accent */}

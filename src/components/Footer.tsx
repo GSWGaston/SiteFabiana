@@ -181,7 +181,7 @@ export default function Footer() {
                 Porto Alegre e Região Metropolitana
               </div>
               <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: '#a9a6c8', marginTop: '2px' }}>
-                Rio Grande do Sul - RS
+                Rio Grande do Sul - RS · Atendimento online para todo o Brasil
               </div>
             </div>
           </div>
