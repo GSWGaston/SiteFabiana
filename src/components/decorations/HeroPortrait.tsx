@@ -7,7 +7,7 @@ const HEART =
 const float = (delay = 0): React.CSSProperties => ({ animation: `float 5s ease-in-out ${delay}s infinite` });
 
 /** Portrait cut into an organic blob, with the layered shapes around it. */
-export function HeroPortrait() {
+export function HeroPortrait({ minimal = false }: { minimal?: boolean }) {
   return (
     <div style={{ position: 'relative', width: 'min(440px, 100%)', aspectRatio: '1 / 1.05' }}>
       {/* soft lavender backdrop */}
@@ -31,40 +31,33 @@ export function HeroPortrait() {
         <path d={BLOB} fill="none" stroke="#fff" strokeWidth="1.6" />
       </svg>
 
-      {/* green patterned heart */}
+      {!minimal && (
       <svg viewBox="0 0 32 32" aria-hidden="true" style={{ position: 'absolute', left: '-8%', top: '10%', width: '26%', transform: 'rotate(-12deg)', ...float() }}>
         <path d={HEART} fill="#82B42D" stroke="#fff" strokeWidth="0.8" />
         {[[9, 9], [15, 7], [21, 10], [8, 15], [14, 14], [20, 16], [13, 21]].map(([x, y]) => (
           <path key={`${x}-${y}`} d={`M${x} ${y} l3 -2`} stroke="#A9D35E" strokeWidth="1.2" strokeLinecap="round" />
         ))}
       </svg>
-
-      {/* pink heart */}
-      <svg viewBox="0 0 32 32" aria-hidden="true" style={{ position: 'absolute', left: '-6%', bottom: '24%', width: '12%', transform: 'rotate(8deg)', ...float(1.5) }}>
-        <path d={HEART} fill="#F52C75" />
-      </svg>
+      )}
 
       {/* orange oval */}
+      {!minimal && (
       <div
         aria-hidden="true"
+        className="hero-oval"
         style={{
           position: 'absolute', right: '-3%', top: '50%', width: '14%', aspectRatio: '1 / 0.82', borderRadius: '50%',
           background: 'linear-gradient(135deg, #FFB347, #FD8303)', transform: 'rotate(-20deg)', boxShadow: '0 8px 16px -4px rgba(253,131,3,0.45)',
           ...float(0.8),
         }}
       />
+      )}
 
       {/* teal blob */}
-      <svg viewBox="0 0 100 70" aria-hidden="true" style={{ position: 'absolute', right: '12%', bottom: '-6%', width: '38%', ...float(2.2) }}>
+      <svg viewBox="0 0 100 70" aria-hidden="true" style={{ position: 'absolute', ...(minimal ? { left: '4%', bottom: '-4%', width: '32%' } : { right: '12%', bottom: '-6%', width: '38%' }), ...float(2.2) }}>
         <path d="M8 40 C4 18 30 4 56 10 C84 16 98 38 82 56 C66 72 22 70 8 40 Z" fill="#1FC4C0" stroke="#fff" strokeWidth="3" />
       </svg>
 
-      {/* confetti */}
-      <svg viewBox="0 0 40 40" aria-hidden="true" style={{ position: 'absolute', right: '-2%', bottom: '14%', width: '9%' }}>
-        {[[6, 6, '#F52C75'], [20, 4, '#FD8303'], [32, 12, '#06A1BC'], [12, 22, '#82B42D'], [28, 28, '#F52C75'], [8, 34, '#06A1BC']].map(([x, y, c]) => (
-          <circle key={`${x}-${y}`} cx={x as number} cy={y as number} r="2.6" fill={c as string} />
-        ))}
-      </svg>
     </div>
   );
 }

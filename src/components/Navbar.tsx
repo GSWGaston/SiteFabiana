@@ -17,11 +17,24 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [current, setCurrent] = useState('#hero');
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
+  }, []);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setCurrent(`#${e.target.id}`)),
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    navLinks.forEach((l) => {
+      const el = document.querySelector(l.href);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
   }, []);
 
   const handleLinkClick = () => setMenuOpen(false);
@@ -67,6 +80,8 @@ export default function Navbar() {
             <img
               src={logoFabiana}
               alt="Logo Fabiana Gaston"
+              width={42}
+              height={42}
               style={{ width: '42px', height: '42px', objectFit: 'contain', flexShrink: 0 }}
             />
 
@@ -75,7 +90,7 @@ export default function Navbar() {
                 style={{
                   fontFamily: 'Poppins, sans-serif',
                   fontWeight: 700,
-                  fontSize: '1.05rem',
+                  fontSize: '1.06rem',
                   color: '#4F4878',
                   lineHeight: 1.1,
                 }}
@@ -85,7 +100,7 @@ export default function Navbar() {
               <div
                 style={{
                   fontFamily: 'Inter, sans-serif',
-                  fontSize: '0.8rem',
+                  fontSize: '0.84rem',
                   color: '#057f95',
                   fontWeight: 500,
                   letterSpacing: '0.04em',
@@ -111,7 +126,7 @@ export default function Navbar() {
           >
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="nav-link" style={{ whiteSpace: 'nowrap' }}>
+                <a href={link.href} className="nav-link" style={{ whiteSpace: 'nowrap' }} aria-current={current === link.href ? 'true' : undefined}>
                   {link.label}
                 </a>
               </li>
@@ -123,31 +138,8 @@ export default function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="desktop-cta"
-            style={{
-              display: 'none',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'linear-gradient(135deg, #06A1BC, #057f95)',
-              color: '#fff',
-              padding: '10px 20px',
-              borderRadius: '9999px',
-              fontFamily: 'Poppins, sans-serif',
-              fontWeight: 600,
-              fontSize: '0.85rem',
-              textDecoration: 'none',
-              boxShadow: '0 4px 20px -4px rgba(6,161,188,0.5)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              whiteSpace: 'nowrap',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 28px -4px rgba(6,161,188,0.65)';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px -4px rgba(6,161,188,0.5)';
-            }}
+            className="desktop-cta btn btn-primary btn-sm"
+            style={{ display: 'none', whiteSpace: 'nowrap' }}
           >
             <MessageCircle size={16} />
             Agendar pelo WhatsApp
@@ -167,6 +159,7 @@ export default function Navbar() {
               transition: 'background 0.2s',
             }}
             aria-label="Abrir menu"
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -225,29 +218,7 @@ export default function Navbar() {
         </button>
 
         {navLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            onClick={handleLinkClick}
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              fontWeight: 600,
-              fontSize: '1rem',
-              color: '#4F4878',
-              textDecoration: 'none',
-              padding: '0.9rem 0',
-              borderBottom: '1px solid rgba(79,72,120,0.1)',
-              transition: 'color 0.2s, padding-left 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.color = '#06A1BC';
-              (e.currentTarget as HTMLElement).style.paddingLeft = '8px';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.color = '#4F4878';
-              (e.currentTarget as HTMLElement).style.paddingLeft = '0';
-            }}
-          >
+          <a key={link.href} href={link.href} onClick={handleLinkClick} className="drawer-link">
             {link.label}
           </a>
         ))}
@@ -257,22 +228,8 @@ export default function Navbar() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleLinkClick}
-          style={{
-            marginTop: '1.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            background: 'linear-gradient(135deg, #06A1BC, #057f95)',
-            color: '#fff',
-            padding: '14px 20px',
-            borderRadius: '9999px',
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 600,
-            fontSize: '0.9rem',
-            textDecoration: 'none',
-            boxShadow: '0 4px 20px -4px rgba(6,161,188,0.5)',
-          }}
+          className="btn btn-primary"
+          style={{ marginTop: '1.5rem' }}
         >
           <MessageCircle size={18} />
           Agendar pelo WhatsApp
@@ -283,7 +240,7 @@ export default function Navbar() {
       <style>{`
         @media (min-width: 1100px) {
           .desktop-nav  { display: flex !important; }
-          .desktop-cta  { display: flex !important; }
+          .desktop-cta  { display: inline-flex !important; }
           #mobile-menu-btn { display: none !important; }
         }
       `}</style>

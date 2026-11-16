@@ -15,7 +15,7 @@ export function LayeredWaves({
   flip = false,
   variant = 'signature',
 }: LayeredWavesProps) {
-  const heightClass = variant === 'ribbon' ? 'h-10 sm:h-12 md:h-14' : 'h-12 sm:h-16 md:h-20 lg:h-24';
+  const heightClass = variant === 'ribbon' ? 'h-10 sm:h-12 md:h-14' : 'h-10 sm:h-12 md:h-16 lg:h-20';
   const duration = variant === 'ribbon' ? '18s' : variant === 'soft' ? '16s' : '13s';
 
   return (

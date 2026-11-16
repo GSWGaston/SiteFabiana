@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Brain } from 'lucide-react';
 import { LayeredWaves } from './decorations/LayeredWaves';
-import { StarDoodle, DotCluster } from './decorations/BrandDoodles';
 
 const WHATSAPP_URL =
   'https://wa.me/555184310180?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
@@ -15,6 +14,8 @@ export default function ConversionBanner() {
       </div>
 
       <section
+        className="on-dark"
+        aria-labelledby="contato-title"
         style={{
           background: '#4F4878',
           padding: '4rem 1.25rem 6rem',
@@ -87,29 +88,19 @@ export default function ConversionBanner() {
           zIndex: 1,
         }}
       >
-        {/* Playful accent with StarDoodles */}
         <motion.div
           initial={{ opacity: 0, scale: 0.7 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', marginBottom: '1.5rem' }}
+          style={{ marginBottom: '1.5rem', color: '#FF8FB5' }}
         >
-          <StarDoodle size={26} />
-          <span style={{ fontSize: '3rem', lineHeight: 1 }}>🧠</span>
-          <StarDoodle size={26} />
+          <Brain size={44} strokeWidth={1.5} aria-hidden="true" />
         </motion.div>
-
-        {/* Floating confetti dots */}
-        <div className="absolute top-10 left-6 opacity-40 pointer-events-none hidden md:block">
-          <DotCluster />
-        </div>
-        <div className="absolute bottom-10 right-6 opacity-40 pointer-events-none hidden md:block">
-          <DotCluster />
-        </div>
 
         {/* Headline */}
         <motion.h2
+          id="contato-title"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -123,13 +114,7 @@ export default function ConversionBanner() {
             lineHeight: 1.25,
           }}
         >
-          Pronto para potencializar o
-          <br />
-          <span style={{ color: '#06A1BC' }}>desenvolvimento cognitivo</span> com{' '}
-          <span className="font-handwriting text-[#F52C75] text-4xl sm:text-5xl md:text-6xl font-bold inline-block transform -rotate-2">
-            afeto
-          </span>
-          ?
+          Pronto para potencializar o desenvolvimento cognitivo com afeto?
         </motion.h2>
 
         {/* Sub-text */}
@@ -140,7 +125,7 @@ export default function ConversionBanner() {
           transition={{ duration: 0.6, delay: 0.2 }}
           style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: '1.05rem',
+            fontSize: '1.06rem',
             color: 'rgba(255,255,255,0.85)',
             lineHeight: 1.75,
             margin: '0 auto 2.5rem',
@@ -161,30 +146,7 @@ export default function ConversionBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55, delay: 0.3 }}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '12px',
-            background: 'linear-gradient(135deg, #06A1BC, #057f95)',
-            color: '#FFFFFF',
-            padding: '18px 40px',
-            borderRadius: '9999px',
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 800,
-            fontSize: '1.05rem',
-            textDecoration: 'none',
-            boxShadow: '0 8px 30px rgba(6,161,188,0.5)',
-            border: '2px solid rgba(255,255,255,0.25)',
-            transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px) scale(1.03)';
-            (e.currentTarget as HTMLElement).style.boxShadow = '0 16px 44px rgba(6,161,188,0.75)';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.transform = 'translateY(0) scale(1)';
-            (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 30px rgba(6,161,188,0.5)';
-          }}
+          className="btn btn-white btn-lg"
         >
           <MessageCircle size={24} />
           Agendar Consulta no WhatsApp
@@ -198,12 +160,12 @@ export default function ConversionBanner() {
           transition={{ duration: 0.6, delay: 0.45 }}
           style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: '0.8rem',
-            color: 'rgba(255,255,255,0.5)',
+            fontSize: '0.84rem',
+            color: 'rgba(255,255,255,0.8)',
             margin: '1.5rem 0 0',
           }}
         >
-          ✓ Sem compromisso inicial · ✓ Resposta rápida · ✓ Atendimento humanizado
+          Sem compromisso inicial. Resposta rápida. Atendimento humanizado.
         </motion.p>
       </div>
     </section>

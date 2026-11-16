@@ -2,28 +2,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 
-function SectionBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      style={{
-        display: 'inline-block',
-        background: 'rgba(245,44,117,0.08)',
-        color: '#F52C75',
-        borderRadius: '9999px',
-        padding: '6px 16px',
-        fontSize: '0.78rem',
-        fontFamily: 'Poppins, sans-serif',
-        fontWeight: 700,
-        letterSpacing: '0.05em',
-        textTransform: 'uppercase',
-        border: '1px solid rgba(245,44,117,0.18)',
-      }}
-    >
-      {children}
-    </span>
-  );
-}
-
 const faqs = [
   {
     id: 'faq1',
@@ -75,6 +53,7 @@ function FaqItem({
         id={item.id}
         onClick={onToggle}
         aria-expanded={isOpen}
+        aria-controls={`${item.id}-panel`}
         style={{
           width: '100%',
           background: 'none',
@@ -93,7 +72,7 @@ function FaqItem({
             fontFamily: 'Poppins, sans-serif',
             fontWeight: 600,
             fontSize: 'clamp(0.92rem, 2vw, 1.02rem)',
-            color: isOpen ? '#06A1BC' : '#4F4878',
+            color: isOpen ? '#057f95' : '#4F4878',
             lineHeight: 1.45,
             transition: 'color 0.25s',
             flex: 1,
@@ -107,7 +86,7 @@ function FaqItem({
             width: '36px',
             height: '36px',
             borderRadius: '9999px',
-            background: isOpen ? '#06A1BC' : 'rgba(79,72,120,0.08)',
+            background: isOpen ? '#057f95' : 'rgba(79,72,120,0.08)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -124,6 +103,9 @@ function FaqItem({
         {isOpen && (
           <motion.div
             key="content"
+            id={`${item.id}-panel`}
+            role="region"
+            aria-labelledby={item.id}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -133,7 +115,7 @@ function FaqItem({
             <div
               style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '0.92rem',
+                fontSize: '0.94rem',
                 color: '#4a5568',
                 lineHeight: 1.8,
                 paddingBottom: '1.5rem',
@@ -155,7 +137,8 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      style={{ background: '#FAF9FC', padding: '5rem 1.25rem', position: 'relative', overflow: 'hidden' }}
+      aria-labelledby="faq-title"
+      style={{ background: '#FAF9FC', padding: '4.5rem 1.25rem', position: 'relative', overflow: 'hidden' }}
     >
       <div
         style={{
@@ -171,14 +154,14 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           style={{ textAlign: 'center', marginBottom: '3rem' }}
         >
-          <SectionBadge>Dúvidas Frequentes</SectionBadge>
           <h2
+            id="faq-title"
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
               color: '#4F4878',
-              margin: '1rem 0 0.75rem',
+              margin: '0 0 0.75rem',
             }}
           >
             Dúvidas Frequentes
@@ -186,7 +169,7 @@ export default function FAQ() {
           <p
             style={{
               fontFamily: 'Inter, sans-serif',
-              fontSize: '1rem',
+              fontSize: '0.94rem',
               color: '#4a5568',
               lineHeight: 1.7,
               margin: 0,

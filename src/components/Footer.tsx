@@ -39,6 +39,7 @@ const footerLinks = [
 export default function Footer() {
   return (
     <footer
+      className="on-dark"
       style={{
         background: '#1a1830',
         color: '#c4c0dc',
@@ -64,13 +65,16 @@ export default function Footer() {
             <img
               src={logoFabiana}
               alt="Logo Fabiana Gaston"
+              width={44}
+              height={44}
+              loading="lazy"
               style={{ width: '44px', height: '44px', objectFit: 'contain', flexShrink: 0 }}
             />
             <div>
-              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#fff', fontSize: '1rem' }}>
+              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#fff', fontSize: '0.94rem' }}>
                 Fabiana Gaston
               </div>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: '#06A1BC', fontWeight: 500 }}>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.84rem', color: '#5FD3E8', fontWeight: 500 }}>
                 neuropsicopedagoga
               </div>
             </div>
@@ -79,7 +83,7 @@ export default function Footer() {
           <p
             style={{
               fontFamily: 'Inter, sans-serif',
-              fontSize: '0.88rem',
+              fontSize: '0.94rem',
               lineHeight: 1.75,
               color: '#c4c0dc',
               maxWidth: '280px',
@@ -97,26 +101,8 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp da Fabiana Gaston"
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '10px',
-                background: 'rgba(37,211,102,0.15)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#25D366',
-                transition: 'background 0.2s, transform 0.2s',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = 'rgba(37,211,102,0.28)';
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = 'rgba(37,211,102,0.15)';
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-              }}
+              className="icon-link"
+              style={{ background: 'rgba(37,211,102,0.15)', color: '#25D366' }}
             >
               <MessageCircle size={20} />
             </a>
@@ -125,26 +111,8 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram da Fabiana Gaston"
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '10px',
-                background: 'rgba(245,44,117,0.12)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#F52C75',
-                transition: 'background 0.2s, transform 0.2s',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = 'rgba(245,44,117,0.24)';
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = 'rgba(245,44,117,0.12)';
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-              }}
+              className="icon-link"
+              style={{ background: 'rgba(245,44,117,0.18)', color: '#FF6B9E' }}
             >
               <InstagramIcon size={20} />
             </a>
@@ -153,11 +121,11 @@ export default function Footer() {
 
         {/* ── Column 2: Localização ── */}
         <div>
-          <h4
+          <h3
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 700,
-              fontSize: '0.9rem',
+              fontSize: '0.94rem',
               color: '#fff',
               margin: '0 0 1.25rem',
               textTransform: 'uppercase',
@@ -165,7 +133,7 @@ export default function Footer() {
             }}
           >
             Localização
-          </h4>
+          </h3>
 
           <div
             style={{
@@ -175,12 +143,12 @@ export default function Footer() {
               marginBottom: '1rem',
             }}
           >
-            <MapPin size={18} style={{ color: '#06A1BC', flexShrink: 0, marginTop: '2px' }} />
+            <MapPin size={18} style={{ color: '#5FD3E8', flexShrink: 0, marginTop: '2px' }} />
             <div>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.88rem', color: '#c4c0dc', lineHeight: 1.6 }}>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.94rem', color: '#c4c0dc', lineHeight: 1.6 }}>
                 Porto Alegre e Região Metropolitana
               </div>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: '#a9a6c8', marginTop: '2px' }}>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.84rem', color: '#a9a6c8', marginTop: '2px' }}>
                 Rio Grande do Sul - RS · Atendimento online para todo o Brasil
               </div>
             </div>
@@ -191,15 +159,8 @@ export default function Footer() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '0.86rem',
-                    color: '#c4c0dc',
-                    textDecoration: 'none',
-                    transition: 'color 0.2s',
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#06A1BC')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#c4c0dc')}
+                  className="footer-link"
+                  style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.94rem' }}
                 >
                   {link.label}
                 </a>
@@ -210,11 +171,11 @@ export default function Footer() {
 
         {/* ── Column 3: Contato ── */}
         <div>
-          <h4
+          <h3
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 700,
-              fontSize: '0.9rem',
+              fontSize: '0.94rem',
               color: '#fff',
               margin: '0 0 1.25rem',
               textTransform: 'uppercase',
@@ -222,7 +183,7 @@ export default function Footer() {
             }}
           >
             Contato
-          </h4>
+          </h3>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <a
@@ -234,7 +195,7 @@ export default function Footer() {
                 alignItems: 'center',
                 gap: '0.75rem',
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '0.88rem',
+                fontSize: '0.94rem',
                 color: '#25D366',
                 textDecoration: 'none',
                 transition: 'color 0.2s',
@@ -251,8 +212,8 @@ export default function Footer() {
                 alignItems: 'center',
                 gap: '0.75rem',
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '0.88rem',
-                color: '#06A1BC',
+                fontSize: '0.94rem',
+                color: '#5FD3E8',
                 textDecoration: 'none',
                 overflowWrap: 'anywhere',
               }}
@@ -270,8 +231,8 @@ export default function Footer() {
                 alignItems: 'center',
                 gap: '0.75rem',
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '0.88rem',
-                color: '#F52C75',
+                fontSize: '0.94rem',
+                color: '#FF6B9E',
                 textDecoration: 'none',
                 transition: 'color 0.2s',
               }}
@@ -286,24 +247,8 @@ export default function Footer() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'linear-gradient(135deg, #06A1BC, #057f95)',
-              color: '#fff',
-              padding: '11px 20px',
-              borderRadius: '9999px',
-              fontFamily: 'Poppins, sans-serif',
-              fontWeight: 600,
-              fontSize: '0.82rem',
-              textDecoration: 'none',
-              marginTop: '1.5rem',
-              boxShadow: '0 4px 20px -4px rgba(6,161,188,0.5)',
-              transition: 'transform 0.2s ease',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+            className="btn btn-primary btn-sm"
+            style={{ marginTop: '1.5rem' }}
           >
             <MessageCircle size={15} />
             Falar pelo WhatsApp
@@ -327,7 +272,7 @@ export default function Footer() {
         <p
           style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: '0.78rem',
+            fontSize: '0.84rem',
             color: '#a9a6c8',
             margin: 0,
           }}
@@ -337,7 +282,7 @@ export default function Footer() {
         <p
           style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: '0.78rem',
+            fontSize: '0.84rem',
             color: '#a9a6c8',
             margin: 0,
           }}

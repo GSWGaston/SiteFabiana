@@ -4,28 +4,6 @@ import { Home, Video, MessageCircle } from 'lucide-react';
 const WHATSAPP_URL =
   'https://wa.me/555184310180?text=Ol%C3%A1%2C%20Fabiana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20consultas.';
 
-function SectionBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      style={{
-        display: 'inline-block',
-        background: 'rgba(130,180,45,0.10)',
-        color: '#82B42D',
-        borderRadius: '9999px',
-        padding: '6px 16px',
-        fontSize: '0.78rem',
-        fontFamily: 'Poppins, sans-serif',
-        fontWeight: 700,
-        letterSpacing: '0.05em',
-        textTransform: 'uppercase',
-        border: '1px solid rgba(130,180,45,0.2)',
-      }}
-    >
-      {children}
-    </span>
-  );
-}
-
 const cards = [
   {
     id: 'presencial',
@@ -36,7 +14,6 @@ const cards = [
     tag: 'Porto Alegre · RS',
     tagColor: '#4F4878',
     title: 'Atendimento Presencial',
-    emoji: '🏢',
     features: [
       'Consultório acolhedor em Porto Alegre',
       'Atendimento itinerante na Região Metropolitana',
@@ -47,13 +24,12 @@ const cards = [
   {
     id: 'online',
     icon: <Video size={32} />,
-    iconColor: '#06A1BC',
+    iconColor: '#057f95',
     iconBg: 'rgba(6,161,188,0.1)',
-    gradient: 'linear-gradient(135deg, #06A1BC, #1db8d5)',
+    gradient: 'linear-gradient(135deg, #057f95, #0a8fa8)',
     tag: 'Todo o Brasil',
     tagColor: '#06A1BC',
     title: 'Atendimento Online',
-    emoji: '💻',
     features: [
       'Orientação parental a distância',
       'Assessoria pedagógica a professores',
@@ -67,9 +43,10 @@ export default function Locations() {
   return (
     <section
       id="locais"
+      aria-labelledby="locais-title"
       style={{
         background: '#fff',
-        padding: '5rem 1.25rem',
+        padding: '5.5rem 1.25rem',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -97,14 +74,14 @@ export default function Locations() {
           transition={{ duration: 0.6 }}
           style={{ textAlign: 'center', marginBottom: '3.5rem' }}
         >
-          <SectionBadge>Onde Atendemos</SectionBadge>
           <h2
+            id="locais-title"
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(1.75rem, 4vw, 2.6rem)',
               color: '#4F4878',
-              margin: '1rem 0 0.75rem',
+              margin: '0 0 0.75rem',
             }}
           >
             Onde Atendemos
@@ -112,7 +89,7 @@ export default function Locations() {
           <p
             style={{
               fontFamily: 'Inter, sans-serif',
-              fontSize: '1.05rem',
+              fontSize: '1.06rem',
               color: '#4a5568',
               maxWidth: '480px',
               margin: '0 auto',
@@ -176,21 +153,9 @@ export default function Locations() {
                   {card.icon}
                 </div>
                 <div>
-                  <span
-                    style={{
-                      background: 'rgba(255,255,255,0.25)',
-                      color: '#fff',
-                      borderRadius: '9999px',
-                      padding: '3px 12px',
-                      fontSize: '0.8rem',
-                      fontFamily: 'Poppins, sans-serif',
-                      fontWeight: 700,
-                      display: 'inline-block',
-                      marginBottom: '6px',
-                    }}
-                  >
-                    {card.emoji} {card.tag}
-                  </span>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.94rem', fontWeight: 600, color: 'rgba(255,255,255,0.9)', margin: '0 0 4px' }}>
+                    {card.tag}
+                  </p>
                   <h3
                     style={{
                       fontFamily: 'Poppins, sans-serif',
@@ -225,7 +190,7 @@ export default function Locations() {
                         alignItems: 'center',
                         gap: '0.75rem',
                         fontFamily: 'Inter, sans-serif',
-                        fontSize: '0.9rem',
+                        fontSize: '0.94rem',
                         color: '#475569',
                       }}
                     >
@@ -260,29 +225,7 @@ export default function Locations() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              background: 'linear-gradient(135deg, #06A1BC, #057f95)',
-              color: '#fff',
-              padding: '15px 32px',
-              borderRadius: '9999px',
-              fontFamily: 'Poppins, sans-serif',
-              fontWeight: 700,
-              fontSize: '1rem',
-              textDecoration: 'none',
-              boxShadow: '0 6px 28px -4px rgba(6,161,188,0.5)',
-              transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 36px -4px rgba(6,161,188,0.65)';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 28px -4px rgba(6,161,188,0.5)';
-            }}
+            className="btn btn-primary"
           >
             <MessageCircle size={20} />
             Consultar Disponibilidade de Horários

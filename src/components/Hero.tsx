@@ -82,7 +82,7 @@ export default function Hero() {
               border: '1px solid rgba(79,72,120,0.18)',
               borderRadius: '9999px',
               padding: '8px 18px',
-              fontSize: '0.78rem',
+              fontSize: '0.84rem',
               fontFamily: 'Inter, sans-serif',
               fontWeight: 600,
               color: '#4F4878',
@@ -134,61 +134,13 @@ export default function Hero() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                background: 'linear-gradient(135deg, #06A1BC, #057f95)',
-                color: '#fff',
-                padding: '15px 28px',
-                borderRadius: '9999px',
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                textDecoration: 'none',
-                boxShadow: '0 6px 28px -4px rgba(6,161,188,0.55)',
-                transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
-                (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 36px -4px rgba(6,161,188,0.7)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-                (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 28px -4px rgba(6,161,188,0.55)';
-              }}
+              className="btn btn-primary"
             >
               <MessageCircle size={20} />
               Agendar Consulta no WhatsApp
             </a>
 
-            <a
-              id="hero-services-cta"
-              href="#servicos"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'transparent',
-                color: '#4F4878',
-                padding: '14px 28px',
-                borderRadius: '9999px',
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 600,
-                fontSize: '0.95rem',
-                textDecoration: 'none',
-                border: '2px solid rgba(79,72,120,0.3)',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = '#4F4878';
-                (e.currentTarget as HTMLElement).style.background = 'rgba(79,72,120,0.06)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(79,72,120,0.3)';
-                (e.currentTarget as HTMLElement).style.background = 'transparent';
-              }}
-            >
+            <a id="hero-services-cta" href="#servicos" className="btn btn-ghost">
               Conhecer Como Funciona
               <ChevronDown size={16} />
             </a>
@@ -200,7 +152,7 @@ export default function Hero() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              fontSize: '0.82rem',
+              fontSize: '0.84rem',
               fontFamily: 'Inter, sans-serif',
               color: '#4a5568',
             }}

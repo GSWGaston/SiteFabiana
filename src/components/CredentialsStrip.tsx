@@ -1,125 +1,40 @@
 import { GraduationCap, MapPin, ClipboardList, Heart } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const credentials = [
-  {
-    icon: <GraduationCap size={26} />,
-    iconBg: 'linear-gradient(135deg, #06A1BC, #057f95)',
-    title: 'Pedagogia & Neuropsicopedagogia',
-    subtitle: 'Formação e especialização',
-    shadowColor: 'rgba(6,161,188,0.3)',
-  },
-  {
-    icon: <MapPin size={26} />,
-    iconBg: 'linear-gradient(135deg, #FD8303, #e06f02)',
-    title: 'Presencial e Online',
-    subtitle: 'Porto Alegre e todo o Brasil',
-    shadowColor: 'rgba(253,131,3,0.3)',
-  },
-  {
-    icon: <ClipboardList size={26} />,
-    iconBg: 'linear-gradient(135deg, #82B42D, #6a9424)',
-    title: 'Avaliação Clínica',
-    subtitle: 'Individualizada',
-    shadowColor: 'rgba(130,180,45,0.3)',
-  },
-  {
-    icon: <Heart size={26} />,
-    iconBg: 'linear-gradient(135deg, #F52C75, #c9235f)',
-    title: 'Cuidado em Todas as',
-    subtitle: 'Fases da Vida',
-    shadowColor: 'rgba(245,44,117,0.3)',
-  },
+  { icon: GraduationCap, color: '#057f95', title: 'Pedagogia e Neuropsicopedagogia', subtitle: 'Formação e especialização' },
+  { icon: MapPin, color: '#A04E00', title: 'Presencial e Online', subtitle: 'Porto Alegre e todo o Brasil' },
+  { icon: ClipboardList, color: '#4F7A12', title: 'Avaliação clínica', subtitle: 'Individualizada' },
+  { icon: Heart, color: '#D01F63', title: 'Cuidado em todas', subtitle: 'as fases da vida' },
 ];
 
 export default function CredentialsStrip() {
   return (
-    <section
-      style={{
-        background: '#fff',
-        padding: '3rem 1.25rem',
-        borderBottom: '1px solid rgba(79,72,120,0.06)',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: '1.5rem',
-        }}
-        className="credentials-grid"
+    <section aria-label="Credenciais" style={{ background: '#fff', padding: '2.75rem 1.25rem' }}>
+      <ul
+        className="credentials"
+        style={{ maxWidth: '1200px', margin: '0 auto', padding: 0, listStyle: 'none', display: 'grid', gap: '1.5rem' }}
       >
-        {credentials.map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              padding: '1.25rem 1.5rem',
-              borderRadius: '16px',
-              background: '#FAF9FC',
-              border: '1px solid rgba(79,72,120,0.07)',
-              minWidth: 0,
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-            }}
-            className="card-hover"
-          >
-            <div
-              style={{
-                width: '56px',
-                height: '56px',
-                borderRadius: '9999px',
-                background: item.iconBg,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff',
-                flexShrink: 0,
-                boxShadow: `0 6px 20px -4px ${item.shadowColor}`,
-              }}
-            >
-              {item.icon}
-            </div>
+        {credentials.map(({ icon: Icon, color, title, subtitle }) => (
+          <li key={title} style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', minWidth: 0 }}>
+            <Icon size={28} strokeWidth={1.75} aria-hidden="true" style={{ color, flexShrink: 0 }} />
             <div style={{ minWidth: 0 }}>
-              <div
-                style={{
-                  fontFamily: 'Poppins, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '0.92rem',
-                  color: '#4F4878',
-                  lineHeight: 1.3,
-                }}
-              >
-                {item.title}
+              <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '0.94rem', color: '#4F4878', lineHeight: 1.3 }}>
+                {title}
               </div>
-              <div
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '0.8rem',
-                  color: '#5f5a80',
-                  marginTop: '2px',
-                }}
-              >
-                {item.subtitle}
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.94rem', color: '#5f5a80', marginTop: '2px' }}>
+                {subtitle}
               </div>
             </div>
-          </motion.div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <style>{`
-        @media (min-width: 560px) {
-          .credentials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-        }
-        @media (min-width: 768px) {
-          .credentials-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+        @media (min-width: 560px) { .credentials { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 900px) {
+          .credentials { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+          .credentials li { padding: 0 1.5rem; }
+          .credentials li + li { border-left: 1px solid rgba(79, 72, 120, 0.15); }
         }
       `}</style>
     </section>
